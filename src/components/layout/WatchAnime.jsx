@@ -54,28 +54,28 @@ const WatchAnime = () => {
 
   return (
     <div className="">
-      <div className="bg-[#1A1C22] text-white p-10 flex flex-wrap">
+      <div className="bg-[#1A1C22] text-white px-0 lg:px-5 flex flex-wrap">
         <div className="w-[100%] lg:w-[70%]">
           <div className="">
-            <iframe className="aspect-video w-full rounded-lg" src={watch.headers.Referer} title="Anime" allow=" picture-in-picture; fullscreen" allowFullScreen></iframe>
+            <iframe className="aspect-video w-full rounded-lg" src={watch.headers.Referer} title="Anime" allow="autoplay; picture-in-picture; fullscreen" allowFullScreen></iframe>
           </div>
 
           {/* <iframe className="aspect-video w-full rounded-lg" src="https://www.youtube.com/embed/nm-GJYOtgxw" allow="autoplay; picture-in-picture; fullscreen" allowFullScreen></iframe> */}
         </div>
-        <div className="w-[100%] lg:w-[30%] px-10 flex flex-col justify-center lg:justify-start text-center lg:text-start">
-          <p className={`${detail.title.romaji.length > 30 ? "text-[17px]" : "text-[17px] lg:text-[25px]"}  font-bold mt-2`}>{detail.title.romaji}</p>
-          <p className="text-[15px] italic text-gray-400 mt-1">
+        <div className="w-[100%] lg:w-[30%] flex flex-col justify-center px-0 lg:px-10 lg:justify-start text-center lg:text-start">
+          <p className={`${detail.title.romaji.length > 30 ? "text-[17px]" : "text-[17px] lg:text-[25px]"}   font-bold mt-2`}>{detail.title.romaji}</p>
+          <p className="text-[15px]  italic text-gray-400 mt-1">
             {detailEps?.title} - Episode {detailEps?.number}
           </p>
-          <div className="flex flex-row gap-2 my-3">
-            <p className="border px-2 hidden lg:block">HD</p>
-            <p className="border px-2 hidden lg:block">SUB</p>
+          <div className="flex flex-row gap-2 my-3 justify-center lg:justify-start">
+            <p className="border px-2 ">HD</p>
+            <p className="border px-2 ">SUB</p>
           </div>
           <h1 className="text-[17px] text-[#E65176] mt-5">Episodes</h1>
           <div
             className={`${
-              detail.episodes.length > 37 ? "overflow-y-auto w-full h-[500px] lg:h-[325px] 2xl:h-[563px] " : ""
-            } grid grid-cols-5 lg:grid-cols-5  text-center gap-4 mt-2 text-[20px] lg:text-[20px] rounded-lg w-full`}
+              detail.episodes.length > 37 ? "overflow-y-auto w-full h-[500px] lg:h-[325px] 2xl:h-[563px]" : ""
+            } grid grid-cols-5 lg:grid-cols-5  text-center gap-4 mt-2 text-[20px] lg:text-[20px] rounded-lg w-full px-5 lg:px-0`}
           >
             {detail.episodes.map((eps) => (
               <button

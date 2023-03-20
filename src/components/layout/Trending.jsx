@@ -23,14 +23,13 @@ const Trending = () => {
   if (isPopularLoading) return <Loader />;
   if (isPopularError) return <h1>Error...</h1>;
 
-
-
   return (
     <div className="w-full px-5 lg:px-10 mt-5 ">
       <h1 className="text-[#EF547A] font-semibold text-[17px] lg:text-[25px]">Trending</h1>
 
       <Swiper
         slidesPerView={2}
+        // spaceBetween={-50}
         pagination={{
           clickable: true,
           dynamicBullets: true,
@@ -38,6 +37,11 @@ const Trending = () => {
         loop={true}
         centeredSlides={true}
         breakpoints={{
+          480: {
+            slidesPerView: 2,
+            spaceBetween: -50,
+            centeredSlides: true,
+          },
           550: {
             slidesPerView: 3,
             spaceBetween: 10,
