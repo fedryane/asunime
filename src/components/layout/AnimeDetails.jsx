@@ -39,10 +39,10 @@ const AnimeDetails = () => {
 
   return (
     <div className="w-full h-[500px]">
-      <div className="relative z-[-1]">
-        <div className="flex flex-wrap justify-between">
-          <div className="w-[100%] lg:w-[70%] h-[500px] flex flex-col lg:flex-row justify-center items-center lg:items-stretch lg:items-none lg:justify-start p-10 gap-5">
-            <img src={detail.image} alt="" className="w-[185px] lg:w-[300px] lg:h-[400px] px-5" />
+      <div className="relative">
+        <div className="flex flex-wrap justify-between ">
+          <div className="w-[100%] lg:w-[70%] h-[500px]  flex flex-col lg:flex-row justify-center items-center lg:items-stretch lg:items-none lg:justify-start p-10 gap-5">
+            <img src={detail.image} alt="" className="w-[185px] z-[0] lg:w-[300px] lg:h-[400px] px-5" />
             <div className="flex flex-col text-center lg:text-start px-5">
               <h1 className="text-white font-normal text-[25px] lg:text-[27px]">{detail.title.romaji}</h1>
               <div className="flex text-white gap-2 text-[13px] justify-center lg:justify-start">
@@ -57,7 +57,10 @@ const AnimeDetails = () => {
                 {detail.episodes.length === 0 ? (
                   <p className="text-gray-400 italic">No episodes</p>
                 ) : (
-                  <Link to={`/watch/${id}/${detail?.episodes[0]?.number}`} className="bg-[#EF547A] hover:bg-[#eb839d] text-white px-8 py-3 lg:px-7 lg:py-3 rounded-full flex items-center  gap-2">
+                  <Link
+                    to={`/watch/${id}/${detail?.episodes[0]?.number}`}
+                    className="bg-[#EF547A]  hover:bg-[#eb839d] text-white px-8 py-3 lg:px-7 lg:py-3 rounded-full cursor-pointer flex items-center gap-2"
+                  >
                     <BsFillPlayFill />
                     Watch Now
                   </Link>
@@ -161,7 +164,7 @@ const AnimeDetails = () => {
           {detail.characters === undefined ? null : (
             <div className="my-5">
               <h1 className="text-[#EF547A] font-normal text-[17px] lg:text-[25px]">Characters List</h1>
-              <div className="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 2xl:grid-cols-7 gap-5">
+              <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 2xl:grid-cols-7 gap-0 lg:gap-5">
                 {detail.characters.map((i) => {
                   return (
                     <div className="flex flex-col items-center justify-center mt-5">

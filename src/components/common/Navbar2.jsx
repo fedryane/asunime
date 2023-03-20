@@ -19,7 +19,7 @@ const Navbar2 = () => {
   return (
     <div className="relative">
       <nav
-        className={changeColor ? "w-full fixed top-0 left-0 right-0 bg-[#141414] text-white transition duration-300 z-10 opacity-80" : "w-full bg-transparent text-white transition duration-500 z-10 "}
+        className={changeColor ? "w-full fixed top-0 left-0 right-0 bg-[#141414] text-white transition duration-300 z-20 opacity-80" : "w-full bg-transparent text-white transition duration-500 z-20 "}
       >
         <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
           <div className="flex items-center justify-between py-3 md:py-5 md:block">
