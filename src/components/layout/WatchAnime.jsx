@@ -57,7 +57,7 @@ const WatchAnime = () => {
       <div className="bg-[#1A1C22] text-white px-0 lg:px-5 flex flex-wrap">
         <div className="w-[100%] lg:w-[70%]">
           <div className="">
-            <iframe className="aspect-video w-full h-[260px] lg:h-full rounded-lg" src={watch.headers.Referer} title="Anime" allow="autoplay; picture-in-picture; fullscreen" allowFullScreen></iframe>
+            <iframe className="aspect-video w-full h-[280px] lg:h-full rounded-lg" src={watch.headers.Referer} title="Anime" allow="autoplay; picture-in-picture; fullscreen" allowFullScreen></iframe>
           </div>
 
           {/* <iframe className="aspect-video w-full rounded-lg" src="https://www.youtube.com/embed/nm-GJYOtgxw" allow="autoplay; picture-in-picture; fullscreen" allowFullScreen></iframe> */}
