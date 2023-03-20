@@ -20,6 +20,7 @@ const AnimeDetails = () => {
   } = useQuery({
     queryKey: ["DetailAnime", id],
     queryFn: () => fetchAnimeDetail(id),
+    keepPreviousData: true,
   });
 
   if (detailLoading) return <LoadingComponent />;
@@ -38,7 +39,7 @@ const AnimeDetails = () => {
 
   return (
     <div className="w-full h-[500px]">
-      <div className="relative">
+      <div className="relative z-[-1]">
         <div className="flex flex-wrap justify-between">
           <div className="w-[100%] lg:w-[70%] h-[500px] flex flex-col lg:flex-row justify-center items-center lg:items-stretch lg:items-none lg:justify-start p-10 gap-5">
             <img src={detail.image} alt="" className="w-[185px] lg:w-[300px] lg:h-[400px] px-5" />
@@ -85,7 +86,7 @@ const AnimeDetails = () => {
             </div>
           </div>
 
-          <div className="w-[100%] h-[550px] lg:w-[25%] flex lg:h-[550px] bg-[#5c5d5f] opacity-50">
+          <div className="w-[100%] h-[570px] lg:w-[25%] lg:h-[550px]  flex  bg-[#5c5d5f] opacity-50">
             <div className="px-7 flex flex-col gap-2 text-[15px] mt-5 lg:mt-16 font-extrabold opacity-100">
               <div className="text-white block lg:hidden">
                 Overview :<p className="font-medium text-white overflow-y-auto h-32"> {detail.description}</p>
@@ -142,7 +143,7 @@ const AnimeDetails = () => {
       </div>
 
       <div className="flex flex-wrap justify-between">
-        <div className="w-[100%] lg:w-[75%] px-10 mt-5 h-[350px]">
+        <div className="w-[100%] lg:w-[75%] px-4 lg:px-10 mt-5 h-[350px]">
           {detail.trailer === undefined ? null : (
             <div className="flex flex-col my-5">
               <h1 className="text-[#EF547A] font-normal text-[17px] lg:text-[25px]">Promotion Videos</h1>
@@ -160,7 +161,7 @@ const AnimeDetails = () => {
           {detail.characters === undefined ? null : (
             <div className="my-5">
               <h1 className="text-[#EF547A] font-normal text-[17px] lg:text-[25px]">Characters List</h1>
-              <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 2xl:grid-cols-9 gap-5">
+              <div className="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 2xl:grid-cols-7 gap-5">
                 {detail.characters.map((i) => {
                   return (
                     <div className="flex flex-col items-center justify-center mt-5">

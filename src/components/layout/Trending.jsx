@@ -8,7 +8,7 @@ import Loader from "../particles/LoadingComponent";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
-import { Pagination } from "swiper";
+import { Pagination, Autoplay } from "swiper";
 
 const Trending = () => {
   const {
@@ -18,6 +18,7 @@ const Trending = () => {
   } = useQuery({
     queryKey: ["populars"],
     queryFn: () => fetchPopular(1, 20),
+    keepPreviousData: true,
   });
 
   if (isPopularLoading) return <Loader />;
@@ -25,21 +26,26 @@ const Trending = () => {
 
   return (
     <div className="w-full px-5 lg:px-10 mt-5 ">
-      <h1 className="text-[#EF547A] font-semibold text-[17px] lg:text-[25px]">Trending</h1>
+      <h1 className="text-[#EF547A] font-normal text-[17px] lg:text-[25px]">Trending Anime</h1>
 
       <Swiper
         slidesPerView={2}
-        // spaceBetween={-50}
+        spaceBetween={30}
+        autoplay={{
+          delay: 2000,
+          disableOnInteraction: false,
+        }}
         pagination={{
           clickable: true,
           dynamicBullets: true,
         }}
         loop={true}
-        centeredSlides={true}
+        centeredSlides={false}
         breakpoints={{
-          480: {
-            slidesPerView: 2,
-            spaceBetween: -90,
+          490: {
+            slidesPerView: 3,
+            spaceBetween: 30,
+            // centeredSlides: false,
           },
           550: {
             slidesPerView: 3,
@@ -74,9 +80,9 @@ const Trending = () => {
             loop: true,
           },
         }}
-        modules={[Pagination]}
+        modules={[Pagination, Autoplay]}
         // style={{ "--swiper-navigation-color": "#fff", "--swiper-pagination-color": "#fff" }}
-        className=" overflow-hidden p-0 block relative z-[-10] my-10 "
+        className=" overflow-hidden p-0 block relative z-[-10] my-5"
       >
         {trending.results.map((anime, index) => (
           <SwiperSlide className="" key={index}>

@@ -23,7 +23,7 @@ const Header = () => {
             }}
             loop={true}
             autoplay={{
-              delay: 9000,
+              delay: 4000,
               disableOnInteraction: false,
             }}
             breakpoints={{

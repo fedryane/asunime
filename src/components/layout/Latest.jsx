@@ -36,7 +36,7 @@ const Latest = () => {
   } = useQuery({
     queryKey: ["latestsAnime", currentPage],
     queryFn: () => fetchLatest(currentPage, 20, "gogoanime"),
-    // keepPreviousData: true,
+    keepPreviousData: true,
   });
 
   useEffect(() => {
@@ -81,13 +81,13 @@ const Latest = () => {
                 <BsFillPlayFill className="text-[30px] text-white" />
               </div>
             </div>
-            <div className="px-4 py-3 text-white bg-[#0C0B0B] rounded-b-lg w-full h-[105px] md:h-[110px] lg:h-[130px] flex flex-col">
-              <div className="flex items-center justify-between">
-                <p className="p-1 px-2 rounded-lg text-[10px] text-black bg-white">Episode {item.episodeNumber}</p>
-                <p className="p-1 px-2 rounded-lg text-[10px] bg-red-500">{item.rating === null ? "N/A" : "Score " + item.rating}</p>
+            <div className="px-2 py-1 sm:px-3 sm:py-2 md:px-4 md:py-3 text-white bg-[#0C0B0B] rounded-b-lg w-full h-[105px] md:h-[110px] lg:h-[130px] flex flex-col">
+              <div className="mt-2 sm:mt-0 flex items-center justify-between">
+                <p className="px-1.5 py-1.5 rounded-lg text-[10px] text-black bg-white">Episode {item.episodeNumber}</p>
+                <p className=" px-1.5 py-1.5 rounded-lg text-[10px] bg-red-500">{item.rating === null ? "N/A" : "Score " + item.rating}</p>
               </div>
 
-              <p className="mt-4 font-semibold text-[9px] sm:text-[12px] md:text-[12px] lg:text-[13px]">
+              <p className="mt-2.5 font-semibold text-[9px] sm:text-[12px] md:text-[12px] lg:text-[13px]">
                 {item.title.romaji.length > 30 ? item.title.romaji.slice(0, 40) + " ..." : item.title.romaji}
               </p>
 

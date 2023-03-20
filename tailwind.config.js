@@ -3,7 +3,9 @@ const plugin = require("tailwindcss/plugin");
 module.exports = {
   content: ["./src/**/*.{html,js,jsx,ts,tsx}"],
   theme: {
-    extend: {},
+    // screens: {
+    //   xs: "380px",
+    // },
   },
   plugins: [
     // plugin to hide scroll bar

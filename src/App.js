@@ -1,6 +1,8 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 import { Homepage, LatestPage, DubPage, AnimeDetail, Watch } from "./pages/index.js";
+
+// const Homepage = lazy(() => import("./pages/index.js"));
 
 const App = () => {
   return (

@@ -19,8 +19,6 @@ const Dub = () => {
   if (isLatestLoading) return <h1>Loading...</h1>;
   if (isLatestError) return <h1>Error...</h1>;
 
-
-
   return (
     <div className="w-full">
       <div className="flex justify-between items-center">
@@ -35,7 +33,7 @@ const Dub = () => {
         </div>
       </div>
 
-      <div className="grid gap-5 mt-5 grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4">
+      <div className="grid gap-5 mt-5 grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-5">
         {Dubbed.results.map((item, index) => (
           <div key={index}>
             <div className="group relative cursor-pointer overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30 rounded-t-lg">
@@ -49,11 +47,11 @@ const Dub = () => {
                 <BsFillPlayFill className="text-[30px] text-white" />
               </div>
             </div>
-            <div className="px-4 py-2 text-white bg-[#0C0B0B] rounded-b-lg w-full h-[105px] md:h-[110px] lg:h-[130px] flex flex-col">
+            <div className="px-2 py-2 lg:px-4 lg:py-2 text-white bg-[#0C0B0B] rounded-b-lg w-full h-[105px] md:h-[110px] lg:h-[130px] flex flex-col">
               <div className="flex items-center justify-between">
-                <p className={`${item.status === "Completed" ? "bg-green-700 text-white" : "bg-white"} p-1 px-2 rounded-lg text-[10px] text-black`}>{item.status}</p>
+                <p className={`${item.status === "Completed" ? "bg-green-700 text-white" : "bg-white"} p-1.5  lg:px-2.5 lg:py-1.5 rounded-lg text-[10px] text-black`}>{item.status}</p>
 
-                <p className="p-1 px-2 rounded-lg text-[10px] bg-red-500">{item.rating === null ? "N/A" : "Score " + item.rating}</p>
+                <p className="p-1.5  lg:px-2.5 lg:py-1.5 rounded-lg text-[10px] bg-red-500">{item.rating === null ? "N/A" : "Score " + item.rating}</p>
               </div>
 
               <p className="mt-4 font-semibold text-[9px] sm:text-[12px] md:text-[12px] lg:text-[13px]">
