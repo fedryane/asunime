@@ -44,8 +44,12 @@ const Trending = () => {
         breakpoints={{
           490: {
             slidesPerView: 3,
-            spaceBetween: 30,
+            spaceBetween: 80,
             // centeredSlides: false,
+          },
+          503: {
+            slidesPerView: 3,
+            spaceBetween: 80,
           },
           550: {
             slidesPerView: 3,
