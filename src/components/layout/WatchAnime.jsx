@@ -75,7 +75,7 @@ const WatchAnime = () => {
           <div
             className={`${
               detail.episodes.length > 37 ? "overflow-y-auto w-full h-[500px] lg:h-[325px] 2xl:h-[563px]" : ""
-            } grid grid-cols-5 lg:grid-cols-5  text-center gap-4 mt-2 text-[20px] lg:text-[20px] rounded-lg w-full px-5 lg:px-0`}
+            } grid grid-cols-5 lg:grid-cols-5  text-center gap-4 mt-2 text-[20px] lg:text-[20px] rounded-lg w-full px-5 lg:px-0 pb-5 lg:pb-0`}
           >
             {detail.episodes.map((eps) => (
               <button

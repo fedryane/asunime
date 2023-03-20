@@ -85,7 +85,7 @@ const AnimeDetails = () => {
             </div>
           </div>
 
-          <div className="w-[100%] h-[500px] lg:w-[25%] flex lg:h-[550px] bg-[#5c5d5f] opacity-50">
+          <div className="w-[100%] h-[550px] lg:w-[25%] flex lg:h-[550px] bg-[#5c5d5f] opacity-50">
             <div className="px-7 flex flex-col gap-2 text-[15px] mt-5 lg:mt-16 font-extrabold opacity-100">
               <div className="text-white block lg:hidden">
                 Overview :<p className="font-medium text-white overflow-y-auto h-32"> {detail.description}</p>

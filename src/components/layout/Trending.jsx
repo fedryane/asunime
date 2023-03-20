@@ -39,8 +39,7 @@ const Trending = () => {
         breakpoints={{
           480: {
             slidesPerView: 2,
-            spaceBetween: -50,
-            centeredSlides: true,
+            spaceBetween: -90,
           },
           550: {
             slidesPerView: 3,
@@ -77,7 +76,7 @@ const Trending = () => {
         }}
         modules={[Pagination]}
         // style={{ "--swiper-navigation-color": "#fff", "--swiper-pagination-color": "#fff" }}
-        className="mx-auto overflow-hidden p-0 block relative z-[-10] my-10 "
+        className=" overflow-hidden p-0 block relative z-[-10] my-10 "
       >
         {trending.results.map((anime, index) => (
           <SwiperSlide className="" key={index}>
