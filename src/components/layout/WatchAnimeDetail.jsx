@@ -3,11 +3,10 @@ import LoadingComponent from "../particles/LoadingComponent";
 import { useParams, useNavigate } from "react-router-dom";
 
 // API Call
-import { fetchPlayAnime, fetchDetailOnWatch } from "../../config/FetchData";
+import { fetchPlayAnime, fetchAnimeDetail } from "../../config/FetchData";
 import { useQuery } from "@tanstack/react-query";
 
-const WatchAnime = () => {
-  
+const WatchAnimeDetail = () => {
   const { id, eps } = useParams();
   const navigate = useNavigate();
 
@@ -17,7 +16,7 @@ const WatchAnime = () => {
     isError: detailError,
   } = useQuery({
     queryKey: ["data", id],
-    queryFn: () => fetchDetailOnWatch(id),
+    queryFn: () => fetchAnimeDetail(id),
     keepPreviousData: true,
     refetchOnWindowFocus: false,
   });
@@ -100,4 +99,4 @@ const WatchAnime = () => {
   );
 };
 
-export default WatchAnime;
+export default WatchAnimeDetail;

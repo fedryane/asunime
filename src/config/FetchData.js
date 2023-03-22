@@ -14,8 +14,8 @@ export const fetchPopular = async (page, perPage) => {
 
 export const fetchLatest = async (page, perPage, provider) => {
   try {
-    const res = await API.get(`${aniList}/recent-episodes?page=${page}&perPage=${perPage}&provider=${provider}`);
-    // const res = await API.get(`${gogoAnime}/recent-episodes?page=${page}&perPage=${perPage}`);
+    // const res = await API.get(`${aniList}/recent-episodes?page=${page}&perPage=${perPage}&provider=${provider}`);
+    const res = await API.get(`${gogoAnime}/recent-episodes?page=${page}&perPage=${perPage}`);
     return res.data;
   } catch (error) {
     console.log(error);
@@ -50,27 +50,18 @@ export const fetchAnimeDetail = async (id, provider) => {
   }
 };
 
-export const fetchPlayAnime = async (epsId) => {
+export const fetchPlayAnime = async (epsId, provider) => {
   try {
-    const res = await API.get(`${aniList}/watch/${epsId}`);
+    const res = await API.get(`${gogoAnime}/watch/${epsId}?provider=${provider}`);
     return res.data;
   } catch (error) {
     console.log(error);
   }
 };
 
-export const testingPlay = async (epsId) => {
+export const fetchDetailOnWatch = async (id) => {
   try {
-    const res = await API.get(`${aniList}/watch/${epsId}`);
-    return res.data;
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-export const testingRecent = async (page, type) => {
-  try {
-    const res = await API.get(`${gogoAnime}/recent-episodes?page=${page}&type=${type}`);
+    const res = await API.get(`${gogoAnime}/info/${id}`);
     return res.data;
   } catch (error) {
     console.log(error);

@@ -36,8 +36,6 @@ const SearchBar = () => {
     }
   }, [search]);
 
-  console.log(search);
-
   return (
     <div className="p-0 lg:p-4 ">
       <label htmlFor="table-search" className=""></label>

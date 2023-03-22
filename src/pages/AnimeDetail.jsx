@@ -1,12 +1,16 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import Navbar2 from "../components/common/Navbar2";
-import { AnimeDetails, Latest, Genres, TopAiring } from "../components/layout";
+// import { AnimeDetails } from "../components/layout";
+
+const AnimeDetails = lazy(() => import("../components/layout/AnimeDetails"));
 
 const AnimeDetail = () => {
   return (
     <div>
       <Navbar2 />
-      <AnimeDetails />
+      <Suspense fallback={<div>Loading...</div>}>
+        <AnimeDetails />
+      </Suspense>
     </div>
   );
 };

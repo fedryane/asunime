@@ -43,7 +43,7 @@ const Latest = () => {
     window.scrollTo(0, 0);
   }, [currentPage]);
 
-  console.log(latest);
+  // console.log(latest);
 
   if (isLatestLoading) return <h1>Loading...</h1>;
   if (isLatestError) return <h1>Error...</h1>;
@@ -67,7 +67,7 @@ const Latest = () => {
           <div
             key={index}
             onClick={() => {
-              handleWatch(item.id, item.episodeNumber);
+              handleWatch(item.id, item.episodeId);
             }}
           >
             <div className="group relative cursor-pointer overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30 rounded-t-lg">
@@ -81,15 +81,14 @@ const Latest = () => {
                 <BsFillPlayFill className="text-[30px] text-white" />
               </div>
             </div>
-            <div className="px-2 py-1 sm:px-3 sm:py-2 md:px-4 md:py-3 text-white bg-[#0C0B0B] rounded-b-lg w-full h-[105px] md:h-[110px] lg:h-[130px] flex flex-col">
+            <div className="p-3 text-white bg-[#0C0B0B] rounded-b-lg w-full h-[105px] md:h-[110px] lg:h-[130px] flex flex-col">
               <div className="mt-2 sm:mt-0 flex items-center justify-between">
-                <p className="px-1.5 py-1.5 rounded-lg text-[10px] text-black bg-white">Episode {item.episodeNumber}</p>
-                <p className=" px-1.5 py-1.5 rounded-lg text-[10px] bg-red-500">{item.rating === null ? "N/A" : "Score " + item.rating}</p>
+                <p className=" px-1.5 py-1 rounded-lg text-[10px] bg-blue-500">SUB</p>
+                <p className="px-1.5 py-1 rounded-lg text-[10px] text-black bg-white">Episode {item.episodeNumber}</p>
+                {/* <p className=" px-1.5 py-1.5 rounded-lg text-[10px] bg-red-500">{item.rating === null ? "N/A" : "Score " + item.rating}</p> */}
               </div>
 
-              <p className="mt-2.5 font-semibold text-[9px] sm:text-[12px] md:text-[12px] lg:text-[13px]">
-                {item.title.romaji.length > 30 ? item.title.romaji.slice(0, 40) + " ..." : item.title.romaji}
-              </p>
+              <p className="mt-2.5 font-semibold text-[9px] sm:text-[12px] md:text-[12px] lg:text-[13px]">{item.title.length > 30 ? item.title.slice(0, 40) + " ..." : item.title}</p>
 
               <div className="flex items-center gap-4 text-[10px] lg:text-[13px] text-gray-500 ">
                 <p>Sub</p>
@@ -104,6 +103,10 @@ const Latest = () => {
         <Pagination nextPage={nextPage} prevPage={prevPage} disabledNext={latest.results.length < 20} disabledPrev={currentPage === 1} currentPage={currentPage} />
       ) : null}
     </div>
+
+    // <div>
+    //   <h1>asdasd</h1>
+    // </div>
   );
 };
 

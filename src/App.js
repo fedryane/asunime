@@ -2,7 +2,11 @@ import React, { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 import { Homepage, LatestPage, DubPage, AnimeDetail, Watch } from "./pages/index.js";
 
-// const Homepage = lazy(() => import("./pages/index.js"));
+// const Homepage = lazy(() => import("./pages/Homepage"));
+// const LatestPage = lazy(() => import("./pages/LatestPage"));
+// const DubPage = lazy(() => import("./pages/DubPage"));
+// const AnimeDetail = lazy(() => import("./pages/AnimeDetail"));
+// const Watch = lazy(() => import("./pages/Watch"));
 
 const App = () => {
   return (
@@ -25,3 +29,6 @@ const App = () => {
 };
 
 export default App;
+
+// <Suspense fallback={<div>Loading...</div>}>
+//       </Suspense>
