@@ -7,7 +7,6 @@ import { fetchPlayAnime, fetchDetailOnWatch } from "../../config/FetchData";
 import { useQuery } from "@tanstack/react-query";
 
 const WatchAnime = () => {
-  
   const { id, eps } = useParams();
   const navigate = useNavigate();
 
@@ -30,13 +29,13 @@ const WatchAnime = () => {
     isError: isWatchError,
   } = useQuery({
     queryKey: ["currently-watching", eps],
-    queryFn: () => fetchPlayAnime(eps, "vidcdn"),
+    queryFn: () => fetchPlayAnime(eps, "streamsb"),
     keepPreviousData: true,
     refetchOnWindowFocus: false,
   });
 
   const handleJumpEps = async (epsID) => {
-    navigate(`/watch/${id}/${epsID}`);
+    navigate(`/latest-watch/${id}/${epsID}`);
   };
 
   if (detailLoading) return <LoadingComponent />;

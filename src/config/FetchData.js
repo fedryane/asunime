@@ -22,10 +22,10 @@ export const fetchLatest = async (page, perPage, provider) => {
   }
 };
 
-export const fetchTopAiring = async (page, perPage, weekStart) => {
+export const fetchTopAiring = async (page, perPage, weekEnd) => {
   try {
     // const res = await API.get(`${gogoAnime}/top-airing`);
-    const res = await API.get(`${aniList}/airing-schedule?page=${page}&perPage=${perPage}&weekStart${weekStart}`);
+    const res = await API.get(`${aniList}/airing-schedule?page=${page}&perPage=${perPage}&weekEnd${weekEnd}`);
     return res.data;
   } catch (error) {
     console.log(error);

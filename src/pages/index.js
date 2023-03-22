@@ -3,3 +3,4 @@ export { default as LatestPage } from "./LatestPage.jsx";
 export { default as DubPage } from "./DubPage.jsx";
 export { default as AnimeDetail } from "./AnimeDetail.jsx";
 export { default as Watch } from "./Watch.jsx";
+export { default as Watchs } from "./Watchs.jsx";

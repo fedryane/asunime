@@ -58,7 +58,7 @@ const AnimeDetails = () => {
                   <p className="text-gray-400 italic">No episodes</p>
                 ) : (
                   <Link
-                    to={`/watch/${id}/${detail?.episodes[0]?.id}`}
+                    to={`/watch-now/${id}/${detail?.episodes[0]?.id}`}
                     className="bg-[#EF547A]  hover:bg-[#eb839d] text-white px-8 py-3 lg:px-7 lg:py-3 rounded-full cursor-pointer flex items-center gap-2"
                   >
                     <BsFillPlayFill />

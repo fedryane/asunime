@@ -13,7 +13,7 @@ const TopAiring = () => {
     isError: topAiringError,
   } = useQuery({
     queryKey: ["topAiring", currentPage],
-    queryFn: () => fetchTopAiring(1, 10),
+    queryFn: () => fetchTopAiring(1, 10, 6),
     keepPreviousData: true,
   });
 
@@ -22,7 +22,7 @@ const TopAiring = () => {
 
   return (
     <div className="w-full mt-3">
-      <h1 className="text-[#EF547A] font-normal text-[17px] lg:text-[25px]">Week Upcoming</h1>
+      <h1 className="text-[#EF547A] font-normal text-[17px] lg:text-[25px]">Schedule Anime</h1>
       <div className="bg-[#2a2c31] rounded-lg  mt-5 p-0 lg:p-3">
         {topAiring.results.map((anime, index) => (
           <Link to={`/anime/detail/${anime.id}`} className="flex flex-row items-center gap-3 p-2 lg:pl-3 hover:bg-gray-700 cursor-pointer rounded-xl" key={index}>

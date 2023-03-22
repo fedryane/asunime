@@ -26,7 +26,7 @@ const Latest = () => {
   };
 
   const handleWatch = (animeId, epsNum) => {
-    navigate(`/watch/${animeId}/${epsNum}`);
+    navigate(`/latest-watch/${animeId}/${epsNum}`);
   };
 
   const {
