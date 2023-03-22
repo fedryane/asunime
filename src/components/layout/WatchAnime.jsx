@@ -29,7 +29,7 @@ const WatchAnime = () => {
     isError: isWatchError,
   } = useQuery({
     queryKey: ["currently-watching", eps],
-    queryFn: () => fetchPlayAnime(eps, "streamsb"),
+    queryFn: () => fetchPlayAnime(eps, "gogoanime"),
     keepPreviousData: true,
     refetchOnWindowFocus: false,
   });

@@ -81,14 +81,14 @@ const Latest = () => {
                 <BsFillPlayFill className="text-[30px] text-white" />
               </div>
             </div>
-            <div className="p-3 text-white bg-[#0C0B0B] rounded-b-lg w-full h-[105px] md:h-[110px] lg:h-[130px] flex flex-col">
-              <div className="mt-2 sm:mt-0 flex items-center justify-between">
-                <p className=" px-1.5 py-1 rounded-lg text-[10px] bg-blue-500">SUB</p>
-                <p className="px-1.5 py-1 rounded-lg text-[10px] text-black bg-white">Episode {item.episodeNumber}</p>
+            <div className="p-3 text-white bg-[#0C0B0B] rounded-b-lg w-full h-[105px] md:h-[110px] lg:h-[130px]">
+              <div className="relative sm:mt-0 ">
+                <p className="absolute  top-[-40px] left-0  px-1.5 py-1 rounded-lg text-[10px] bg-blue-500">SUB</p>
+                <p className="absolute  top-[-40px] right-0 px-1.5 py-1 rounded-lg text-[10px] text-black bg-white">Episode {item.episodeNumber}</p>
                 {/* <p className=" px-1.5 py-1.5 rounded-lg text-[10px] bg-red-500">{item.rating === null ? "N/A" : "Score " + item.rating}</p> */}
               </div>
 
-              <p className="mt-2.5 font-semibold text-[9px] sm:text-[12px] md:text-[12px] lg:text-[13px]">{item.title.length > 30 ? item.title.slice(0, 40) + " ..." : item.title}</p>
+              <p className="font-semibold text-[9px] sm:text-[12px] md:text-[12px] lg:text-[13px]">{item.title.length > 30 ? item.title.slice(0, 40) + " ..." : item.title}</p>
 
               <div className="flex items-center gap-4 text-[10px] lg:text-[13px] text-gray-500 ">
                 <p>Sub</p>
@@ -103,10 +103,6 @@ const Latest = () => {
         <Pagination nextPage={nextPage} prevPage={prevPage} disabledNext={latest.results.length < 20} disabledPrev={currentPage === 1} currentPage={currentPage} />
       ) : null}
     </div>
-
-    // <div>
-    //   <h1>asdasd</h1>
-    // </div>
   );
 };
 

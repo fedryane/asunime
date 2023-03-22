@@ -67,3 +67,12 @@ export const fetchDetailOnWatch = async (id) => {
     console.log(error);
   }
 };
+
+export const fetchGenre = async (genre, page) => {
+  try {
+    const res = await API.get(`${gogoAnime}/genre/${genre}&page=${page}`);
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+};

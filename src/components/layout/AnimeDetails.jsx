@@ -161,7 +161,7 @@ const AnimeDetails = () => {
             </div>
           )}
 
-          {detail.characters === undefined ? null : (
+          {detail.characters.length === 0 ? null : (
             <div className="my-5">
               <h1 className="text-[#EF547A] font-normal text-[17px] lg:text-[25px]">Characters List</h1>
               <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 2xl:grid-cols-8 gap-0 lg:gap-5">

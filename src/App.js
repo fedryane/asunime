@@ -1,6 +1,6 @@
 import React, { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
-import { Homepage, LatestPage, DubPage, AnimeDetail, Watch, Watchs } from "./pages/index.js";
+import { Homepage, LatestPage, DubPage, AnimeDetail, Watch, Watchs, AnimeByGenre } from "./pages/index.js";
 
 // const Homepage = lazy(() => import("./pages/Homepage"));
 // const LatestPage = lazy(() => import("./pages/LatestPage"));
@@ -26,6 +26,8 @@ const App = () => {
       <Route path="/latest-watch/:id/:eps" element={<Watch />} />
 
       <Route path="/watch-now/:id/:epsId" element={<Watchs />} />
+
+      <Route path="/genre/:id" element={<AnimeByGenre />} />
     </Routes>
   );
 };
