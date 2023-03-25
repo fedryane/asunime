@@ -5,5 +5,5 @@ export const API = axios.create({
 });
 
 export const API2 = axios.create({
-  baseURL: "https://asu-nime-server-2.up.railway.app",
+  baseURL: "https://gogoanime-js.vercel.app/api",
 });

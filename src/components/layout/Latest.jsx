@@ -67,7 +67,10 @@ const Latest = () => {
           <div
             key={index}
             onClick={() => {
-              handleWatch(item.id, item.episodeId);
+              handleWatch(
+                item.id === "itai-no-wa-iya-nano-de-bougyoryoku-ni-kyokufuri-shitai-to-omoimasu-2" ? "itai-no-wa-iya-nano-de-bougyoryoku-ni-kyokufuri-shitai-to-omoimasu-ii" : item.id,
+                item.episodeId
+              );
             }}
           >
             <div className="group relative cursor-pointer overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30 rounded-t-lg">
