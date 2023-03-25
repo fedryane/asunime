@@ -1,8 +1,12 @@
 import React, { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
-import { Homepage, LatestPage, DubPage, AnimeDetail, Watch } from "./pages/index.js";
+import { Homepage, LatestPage, DubPage, AnimeDetail, Watch, Watchs, AnimeByGenre } from "./pages/index.js";
 
-// const Homepage = lazy(() => import("./pages/index.js"));
+// const Homepage = lazy(() => import("./pages/Homepage"));
+// const LatestPage = lazy(() => import("./pages/LatestPage"));
+// const DubPage = lazy(() => import("./pages/DubPage"));
+// const AnimeDetail = lazy(() => import("./pages/AnimeDetail"));
+// const Watch = lazy(() => import("./pages/Watch"));
 
 const App = () => {
   return (
@@ -19,9 +23,16 @@ const App = () => {
       <Route path="/dub-anime" element={<DubPage />} />
 
       {/* Play Anime Route */}
-      <Route path="/watch/:id/:eps" element={<Watch />} />
+      <Route path="/latest-watch/:id/:eps" element={<Watch />} />
+
+      <Route path="/watch-now/:id/:epsId" element={<Watchs />} />
+
+      <Route path="/genre/:id" element={<AnimeByGenre />} />
     </Routes>
   );
 };
 
 export default App;
+
+// <Suspense fallback={<div>Loading...</div>}>
+//       </Suspense>

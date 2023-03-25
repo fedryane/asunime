@@ -58,7 +58,7 @@ const AnimeDetails = () => {
                   <p className="text-gray-400 italic">No episodes</p>
                 ) : (
                   <Link
-                    to={`/watch/${id}/${detail?.episodes[0]?.number}`}
+                    to={`/watch-now/${id}/${detail?.episodes[0]?.id}`}
                     className="bg-[#EF547A]  hover:bg-[#eb839d] text-white px-8 py-3 lg:px-7 lg:py-3 rounded-full cursor-pointer flex items-center gap-2"
                   >
                     <BsFillPlayFill />
@@ -161,10 +161,10 @@ const AnimeDetails = () => {
             </div>
           )}
 
-          {detail.characters === undefined ? null : (
+          {detail.characters.length === 0 ? null : (
             <div className="my-5">
               <h1 className="text-[#EF547A] font-normal text-[17px] lg:text-[25px]">Characters List</h1>
-              <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 2xl:grid-cols-7 gap-0 lg:gap-5">
+              <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 2xl:grid-cols-8 gap-0 lg:gap-5">
                 {detail.characters.map((i) => {
                   return (
                     <div className="flex flex-col items-center justify-center mt-5">

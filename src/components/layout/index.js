@@ -5,4 +5,5 @@ export { default as TopAiring } from "./TopAiring";
 export { default as Dub } from "./Dub";
 export { default as AnimeDetails } from "./AnimeDetails";
 export { default as WatchAnime } from "./WatchAnime";
+export { default as WatchAnimeDetail } from "./WatchAnimeDetail";
 export { default as FilterAnime } from "./FilterAnime";

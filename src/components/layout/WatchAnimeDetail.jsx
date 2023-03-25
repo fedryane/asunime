@@ -3,12 +3,14 @@ import LoadingComponent from "../particles/LoadingComponent";
 import { useParams, useNavigate } from "react-router-dom";
 
 // API Call
-import { fetchPlayAnime, fetchDetailOnWatch } from "../../config/FetchData";
+import { fetchPlayAnime, fetchAnimeDetail } from "../../config/FetchData";
 import { useQuery } from "@tanstack/react-query";
 
-const WatchAnime = () => {
-  const { id, eps } = useParams();
+const WatchAnimeDetail = () => {
+  const { id, epsId } = useParams();
   const navigate = useNavigate();
+
+  console.log(epsId);
 
   const {
     data: detail,
@@ -16,7 +18,7 @@ const WatchAnime = () => {
     isError: detailError,
   } = useQuery({
     queryKey: ["data", id],
-    queryFn: () => fetchDetailOnWatch(id),
+    queryFn: () => fetchAnimeDetail(id),
     keepPreviousData: true,
     refetchOnWindowFocus: false,
   });
@@ -28,14 +30,14 @@ const WatchAnime = () => {
     isLoading: isWatchLoading,
     isError: isWatchError,
   } = useQuery({
-    queryKey: ["currently-watching", eps],
-    queryFn: () => fetchPlayAnime(eps, "gogoanime"),
+    queryKey: ["currently-watching", epsId],
+    queryFn: () => fetchPlayAnime(epsId),
     keepPreviousData: true,
     refetchOnWindowFocus: false,
   });
 
   const handleJumpEps = async (epsID) => {
-    navigate(`/latest-watch/${id}/${epsID}`);
+    navigate(`/watch-now/${id}/${epsID}`);
   };
 
   if (detailLoading) return <LoadingComponent />;
@@ -56,14 +58,21 @@ const WatchAnime = () => {
                 <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-400 flex items-center"></div>
               </div>
             ) : (
-              <iframe className="aspect-video w-full h-[280px] lg:h-full rounded-lg" src={watch.headers.Referer} title={eps} allow="autoplay; picture-in-picture; fullscreen" allowFullScreen></iframe>
+              <iframe
+                className="aspect-video w-full h-[280px] lg:h-full rounded-lg"
+                src={watch.headers.Referer}
+                title={epsId}
+                allow="autoplay; picture-in-picture; fullscreen"
+                allowFullScreen
+              ></iframe>
             )}
           </div>
 
           {/* <iframe className="aspect-video w-full rounded-lg" src="https://www.youtube.com/embed/nm-GJYOtgxw" allow="autoplay; picture-in-picture; fullscreen" allowFullScreen></iframe> */}
         </div>
         <div className="w-[100%] lg:w-[30%] flex flex-col justify-center px-0 lg:px-10 lg:justify-start text-center lg:text-start">
-          <p className={`${detail.title.length > 30 ? "text-[17px] px-10 lg:px-0" : "text-[17px] lg:text-[25px]"}   font-bold mt-5 lg:mt-7`}>{detail.title}</p>
+          <p className={`${detail.title.romaji.length > 30 ? "text-[17px] px-10 lg:px-0" : "text-[17px] lg:text-[25px]"}   font-bold mt-5 lg:mt-7`}>{detail.title.romaji}</p>
+
           {/* <p className="text-[15px]  italic text-gray-400 mt-1">
             {detailEps?.title} - Episode {detailEps?.number}
           </p> */}
@@ -80,7 +89,7 @@ const WatchAnime = () => {
             {detail.episodes.map((episode) => {
               return (
                 <button
-                  className={`${eps === episode.id ? "bg-[#a33450] hover:bg-[#c4657d]" : "bg-[#35373D]"} rounded-md p-2 hover:bg-[#a33450] cursor-pointer`}
+                  className={`${epsId === episode.id ? "bg-[#a33450] hover:bg-[#c4657d]" : "bg-[#35373D]"} rounded-md p-2 hover:bg-[#a33450] cursor-pointer`}
                   onClick={() => {
                     handleJumpEps(episode.id);
                   }}
@@ -99,4 +108,4 @@ const WatchAnime = () => {
   );
 };
 
-export default WatchAnime;
+export default WatchAnimeDetail;

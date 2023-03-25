@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { GenresData } from "../../data/data";
+import { Link } from "react-router-dom";
 
 const Genres = () => {
   const [show, setShow] = useState(false);
@@ -16,7 +17,9 @@ const Genres = () => {
       <div className="bg-[#2a2c31] rounded-lg grid grid-cols-3 mt-5 p-1">
         {visibleGenres.map((genre, index) => (
           <div className="p-3 text-start" key={index}>
-            <button className="text-white text-start hover:bg-[#4A4B51] text-[9px] lg:text-[11px] 2xl:text-[15px] font-semibold px-2 py-1 rounded-md ">{genre.name}</button>
+            <Link to={`/genre/${genre.name}`} className="text-white text-start hover:bg-[#4A4B51] text-[9px] lg:text-[11px] 2xl:text-[15px] font-semibold px-2 py-1 rounded-md ">
+              {genre.name.length > 9 ? genre.name.slice(0, 10) + "..." : genre.name}
+            </Link>
           </div>
         ))}
 
