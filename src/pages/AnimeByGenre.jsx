@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar2 from "../components/common/Navbar2";
-import { FilterAnime, Genres, TopAiring } from "../components/layout";
+import { FilterAnime, Genres, Upcoming } from "../components/layout";
 
 const AnimeByGenre = () => {
   return (
@@ -12,7 +12,7 @@ const AnimeByGenre = () => {
         </div>
         <div className="w-[100%] lg:w-[25%]">
           <Genres />
-          <TopAiring />
+          <Upcoming />
         </div>
       </div>
     </div>

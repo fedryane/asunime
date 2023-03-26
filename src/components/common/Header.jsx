@@ -12,7 +12,7 @@ import { Pagination, Autoplay } from "swiper";
 
 const Header = () => {
   return (
-    <div className="w-full h-[300px] lg:h-[560px]">
+    <div className="w-full h-[300px] lg:h-[450px]">
       <div className="relative w-full h-full bg-cover bg-center bg-no-repeat">
         <div className="absolute top-0 left-0 w-full h-full z-[0]">
           <Swiper
@@ -41,7 +41,7 @@ const Header = () => {
           >
             {Hero.map((item, index) => (
               <SwiperSlide className="relative" key={index}>
-                <img src={item.image} alt="spotlight-anime" className="w-full h-[300px] lg:h-[560px] object-center object-cover opacity-[0.4] brightness-50" />
+                <img src={item.image} alt="spotlight-anime" className="w-full h-[300px] lg:h-[450px] object-center object-cover opacity-[0.4] brightness-50" />
                 <div className="absolute bottom-0 left-5 lg:left-10 z-10">
                   <h1 className="font-bold text-[12px] lg:text-[20px] text-[#d64663]">#{item.id} Spotlight</h1>
                   <h1 className="text-[15px] md:text-xl lg:text-4xl text-white font-bold mt-3">{item.title}</h1>

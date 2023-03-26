@@ -233,73 +233,91 @@ export const GenresData = [
   {
     id: 1,
     name: "Action",
+    color: "#F5B041",
   },
   {
     id: 2,
     name: "Adventure",
+    color: "#FFD966",
   },
   {
     id: 3,
     name: "Comedy",
+    color: "#F3DEBA",
   },
   {
     id: 4,
+    color: "#BBD6B8",
     name: "Drama",
   },
   {
     id: 5,
+    color: "#159895",
     name: "Fantasy",
   },
   {
     id: 6,
+    color: "#7149C6",
     name: "Cars",
   },
   {
     id: 7,
+    color: "#FC2947",
     name: "Horror",
   },
   {
     id: 8,
+    color: "#19A7CE",
     name: "Mahou Shoujo",
   },
   {
     id: 9,
+    color: "#E21818",
     name: "Mecha",
   },
   {
     id: 10,
+    color: "#5D9C59",
     name: "Supernatural",
   },
   {
     id: 11,
+    color: "#898121",
     name: "Romance",
   },
   {
     id: 12,
+    color: "#A84448",
     name: "Music",
   },
   {
     id: 13,
+    color: "#EA5455",
     name: "Slice of Life",
   },
   {
     id: 14,
+    color: "#F7C8E0",
     name: "Sports",
   },
   {
     id: 15,
+    color: "#146C94",
     name: "Mystery",
   },
   {
     id: 16,
+    color: "#609EA2",
     name: "Psychological",
   },
   {
     id: 17,
+    color: "#16FF00",
     name: "Sci-Fi",
   },
   {
     id: 18,
+    color: "#146C94",
     name: "Thriller",
   },
 ];

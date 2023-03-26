@@ -21,12 +21,12 @@ const FilterAnime = () => {
 
   const nextPage = () => {
     setCurrentPage((prev) => prev + 1);
-    navigate(`/latest-update?page=${currentPage + 1}`);
+    navigate(`/genre/${id}?page=${currentPage + 1}`);
   };
 
   const prevPage = () => {
     setCurrentPage((prev) => prev - 1);
-    navigate(`/latest-update?page=${currentPage - 1}`);
+    navigate(`/genre/${id}?page=${currentPage - 1}`);
   };
 
   const {
@@ -34,8 +34,8 @@ const FilterAnime = () => {
     isLoading: isGenreLoading,
     isError: isGenreError,
   } = useQuery({
-    queryKey: ["Genre", currentPage],
-    queryFn: () => fetchGenre(id, 1),
+    queryKey: ["Genre", currentPage, id],
+    queryFn: () => fetchGenre(currentPage, 20, id),
     keepPreviousData: true,
   });
 
@@ -83,16 +83,18 @@ const FilterAnime = () => {
             </div>
             <div className="p-3 text-white bg-[#0C0B0B] rounded-b-lg w-full h-[105px] md:h-[110px] lg:h-[130px]">
               <div className="relative mt-2 sm:mt-0">
-                <p className={`${item.title.endsWith("(Dub)") ? "bg-red-500 text-white" : ""} px-1.5 py-1 rounded-lg text-[10px] bg-blue-500 absolute top-[-40px] left-0`}>
+                {/* <p className={`${item.title.endsWith("(Dub)") ? "bg-red-500 text-white" : ""} px-1.5 py-1 rounded-lg text-[10px] bg-blue-500 absolute top-[-40px] left-0`}>
                   {item.title.endsWith("(Dub)") ? "Dub" : "Sub"}
-                </p>
+                </p> */}
                 {/* <p className="px-1.5 py-1 rounded-lg text-[10px] text-black bg-white">Release {item.released}</p> */}
                 {/* <p className=" px-1.5 py-1.5 rounded-lg text-[10px] bg-red-500">{item.rating === null ? "N/A" : "Score " + item.rating}</p> */}
               </div>
               <div className="flex flex-col justify-between">
-                <p className="mt-2.5 font-semibold text-[9px] sm:text-[12px] md:text-[12px] lg:text-[13px]">{item.title.length > 30 ? item.title.slice(0, 40) + " ..." : item.title}</p>
+                <p className="mt-2.5 font-semibold text-[9px] sm:text-[12px] md:text-[12px] lg:text-[13px]">
+                  {item.title.romaji.length > 30 ? item.title.romaji.slice(0, 40) + " ..." : item.title.romaji}
+                </p>
 
-                <p className="text-[9px] sm:text-[12px] md:text-[12px] lg:text-[13px] mt-1 text-gray-500">Released : {item.released}</p>
+                <p className="text-[9px] sm:text-[12px] md:text-[12px] lg:text-[13px] mt-1 text-gray-500">Released : {item.releaseDate}</p>
               </div>
 
               {/* <div className="flex flex-col justify-between text-[10px] gap-4 lg:text-[13px] text-gray-500 ">
@@ -102,9 +104,8 @@ const FilterAnime = () => {
           </div>
         ))}
       </div>
-      {window.location.pathname === "/latest-update" ? (
-        <Pagination nextPage={nextPage} prevPage={prevPage} disabledNext={genre.results.length < 20} disabledPrev={currentPage === 1} currentPage={currentPage} />
-      ) : null}
+
+      <Pagination nextPage={nextPage} prevPage={prevPage} disabledNext={genre.results.length < 20} disabledPrev={currentPage === 1} currentPage={currentPage} />
     </div>
   );
 };

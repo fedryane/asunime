@@ -3,7 +3,7 @@ import { BsFillPlayFill } from "react-icons/bs";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 import { useParams, Link } from "react-router-dom";
 import LoadingComponent from "../particles/LoadingComponent";
-import { Latest, Genres, TopAiring } from "../layout/index";
+import { Latest, Genres, Upcoming } from "../layout/index";
 
 // API Call
 import { fetchAnimeDetail } from "../../config/FetchData";
@@ -182,12 +182,12 @@ const AnimeDetails = () => {
           <Latest />
           <div className="block lg:hidden w-[100%] my-5">
             <Genres />
-            <TopAiring />
+            <Upcoming />
           </div>
         </div>
         <div className="w-[100%] h-[500px] lg:w-[25%] lg:h-[550px] mt-10 hidden lg:flex flex-col">
           <Genres />
-          <TopAiring />
+          <Upcoming />
         </div>
       </div>
     </div>

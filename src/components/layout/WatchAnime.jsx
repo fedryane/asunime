@@ -4,12 +4,14 @@ import { useParams, useNavigate } from "react-router-dom";
 import { BsFillPlayFill } from "react-icons/bs";
 
 // API Call
-import { fetchPlayAnime, fetchDetailOnWatch } from "../../config/FetchData";
+import { fetchPlayAnime, fetchAnimeDetail } from "../../config/FetchData";
 import { useQuery } from "@tanstack/react-query";
 
 const WatchAnime = () => {
   const { id, eps } = useParams();
   const navigate = useNavigate();
+
+  console.log(eps);
 
   const {
     data: detail,
@@ -17,20 +19,23 @@ const WatchAnime = () => {
     isError: detailError,
   } = useQuery({
     queryKey: ["data", id],
-    queryFn: () => fetchDetailOnWatch(id),
+    queryFn: () => fetchAnimeDetail(id),
     keepPreviousData: true,
     refetchOnWindowFocus: false,
   });
 
   console.log(detail);
+  const findEpisode = detail?.episodes?.find((ep) => ep.number === parseInt(eps)).id;
+
+  console.log(findEpisode);
 
   const {
     data: watch,
     isLoading: isWatchLoading,
     isError: isWatchError,
   } = useQuery({
-    queryKey: ["currently-watching", eps],
-    queryFn: () => fetchPlayAnime(eps, "gogoanime"),
+    queryKey: ["currently-watching", findEpisode],
+    queryFn: () => fetchPlayAnime(findEpisode, "gogoanime"),
     keepPreviousData: true,
     refetchOnWindowFocus: false,
 
@@ -49,7 +54,7 @@ const WatchAnime = () => {
   if (detailError) return <h1 className="text-white">Error...</h1>;
 
   if (isWatchLoading) return <LoadingComponent />;
-  // if (isWatchError) return <h1 className="text-white">Error...</h1>;
+  if (isWatchError) return <h1 className="text-white">Error...</h1>;
 
   console.log(watch);
 
@@ -71,7 +76,7 @@ const WatchAnime = () => {
           {/* <iframe className="aspect-video w-full rounded-lg" src="https://www.youtube.com/embed/nm-GJYOtgxw" allow="autoplay; picture-in-picture; fullscreen" allowFullScreen></iframe> */}
         </div>
         <div className="w-[100%] lg:w-[30%] flex flex-col justify-center px-0 lg:px-10 lg:justify-start text-center lg:text-start">
-          <p className={`${detail.title.length > 30 ? "text-[17px] px-10 lg:px-0" : "text-[17px] lg:text-[25px]"}   font-bold mt-5 lg:mt-7`}>{detail.title}</p>
+          <p className={`${detail.title.romaji.length > 30 ? "text-[17px] px-10 lg:px-0" : "text-[17px] lg:text-[25px]"}   font-bold mt-5 lg:mt-7`}>{detail.title.romaji}</p>
           {/* <p className="text-[15px]  italic text-gray-400 mt-1">
             {detailEps?.title} - Episode {detailEps?.number}
           </p> */}
@@ -88,7 +93,7 @@ const WatchAnime = () => {
             {detail.episodes.map((episode) => {
               return (
                 <button
-                  className={`${eps === episode.id ? "bg-[#a33450] hover:bg-[#c4657d]" : "bg-[#35373D]"} rounded-md p-2 hover:bg-[#a33450] cursor-pointer`}
+                  className={`${findEpisode === episode.id ? "bg-[#a33450] hover:bg-[#c4657d]" : "bg-[#35373D]"} rounded-md p-2 hover:bg-[#a33450] cursor-pointer`}
                   onClick={() => {
                     handleJumpEps(episode.id);
                   }}
