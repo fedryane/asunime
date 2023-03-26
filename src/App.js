@@ -24,6 +24,7 @@ const App = () => {
 
       {/* Play Anime Route */}
       <Route path="/latest-watch/:id/:eps" element={<Watch />} />
+      <Route path="/watch-top-airing/:id" element={<Watch />} />
 
       <Route path="/watch-now/:id/:epsId" element={<Watchs />} />
 

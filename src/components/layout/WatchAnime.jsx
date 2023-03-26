@@ -1,6 +1,7 @@
 import React from "react";
 import LoadingComponent from "../particles/LoadingComponent";
 import { useParams, useNavigate } from "react-router-dom";
+import { BsFillPlayFill } from "react-icons/bs";
 
 // API Call
 import { fetchPlayAnime, fetchDetailOnWatch } from "../../config/FetchData";
@@ -32,7 +33,13 @@ const WatchAnime = () => {
     queryFn: () => fetchPlayAnime(eps, "gogoanime"),
     keepPreviousData: true,
     refetchOnWindowFocus: false,
+
+    onError: (error) => {
+      console.log(error);
+    },
   });
+
+  // console.log(watch);
 
   const handleJumpEps = async (epsID) => {
     navigate(`/latest-watch/${id}/${epsID}`);
@@ -42,7 +49,7 @@ const WatchAnime = () => {
   if (detailError) return <h1 className="text-white">Error...</h1>;
 
   if (isWatchLoading) return <LoadingComponent />;
-  if (isWatchError) return <h1 className="text-white">Error...</h1>;
+  // if (isWatchError) return <h1 className="text-white">Error...</h1>;
 
   console.log(watch);
 
@@ -53,7 +60,8 @@ const WatchAnime = () => {
           <div className="">
             {isWatchError ? (
               <div className="bg-[#2f323b] my-5 aspect-video w-full h-[280px] lg:h-full rounded-lg flex justify-center items-center">
-                <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-400 flex items-center"></div>
+                {/* <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-400 flex items-center"></div> */}
+                <BsFillPlayFill className="text-[#E65176] text-[50px] animate-pulse" onClick={handleJumpEps(detail.episodes[0].id)} />
               </div>
             ) : (
               <iframe className="aspect-video w-full h-[280px] lg:h-full rounded-lg" src={watch.headers.Referer} title={eps} allow="autoplay; picture-in-picture; fullscreen" allowFullScreen></iframe>
