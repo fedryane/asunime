@@ -72,7 +72,7 @@ const Latest = () => {
                 handleWatch(item.id, item.episodeNumber);
               }}
               image={item.image}
-              episodeNumber={item.episodeNumber}
+              episodeNumber={`Episode ${item.episodeNumber}`}
               title={item.title.romaji.length > 30 ? item.title.romaji.slice(0, 40) + " ..." : item.title.romaji}
               title2={item.title.native.length > 30 ? item.title.native.slice(0, 40) + " ..." : item.title.native}
               rating={item.rating}

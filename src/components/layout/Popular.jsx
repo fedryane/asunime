@@ -45,7 +45,7 @@ const Dub = () => {
               title={item.title.romaji.length > 30 ? item.title.romaji.slice(0, 40) + " ..." : item.title.romaji}
               title2={item.title.native.length > 30 ? item.title.native.slice(0, 40) + " ..." : item.title.native}
               type={item.releaseDate}
-              episodeNumber={item.totalEpisodes}
+              episodeNumber={`Episode ${item.totalEpisodes}`}
               status={item.status}
             />
           </Link>

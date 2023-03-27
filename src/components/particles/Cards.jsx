@@ -16,7 +16,7 @@ const Cards = ({ onClick, key, image, episodeNumber, title, rating, title2, type
           <div className="relative sm:mt-0 ">
             <p className="absolute top-[-180px] md:top-[-180px] lg:top-[-250px] xl:top-[-250px] right-0 px-1.5 py-1 rounded-lg text-[11px] bg-red-600">Score {rating === null ? "N/A" : rating}</p>
             <p className="absolute top-[-40px] left-0  px-1.5 py-1 rounded-lg text-[10px] bg-blue-500">SUB</p>
-            <p className="absolute top-[-40px] right-0 px-1.5 py-1 rounded-lg text-[10px] text-black bg-white">Episode {episodeNumber}</p>
+            <p className="absolute top-[-40px] right-0 px-1.5 py-1 rounded-lg text-[10px] text-black bg-white">{episodeNumber}</p>
             {/* <p className=" px-1.5 py-1.5 rounded-lg text-[10px] bg-red-500">{item.rating === null ? "N/A" : "Score " + item.rating}</p> */}
           </div>
 
@@ -25,8 +25,8 @@ const Cards = ({ onClick, key, image, episodeNumber, title, rating, title2, type
           <p className="font-semibold text-[9px] sm:text-[12px] md:text-[12px] lg:text-[11px] text-gray-500">{year}</p>
 
           <div className="flex flex-wrap items-center gap-4 text-[10px] lg:text-[13px] text-gray-500 ">
-            <p>{`${type}`}</p>
-            <p>•</p>
+            <p>{type}</p>
+            <p>{`•`}</p>
             <p>{status}</p>
           </div>
         </div>
