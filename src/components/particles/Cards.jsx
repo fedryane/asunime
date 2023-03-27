@@ -1,12 +1,21 @@
 import React from "react";
 import { BsFillPlayFill } from "react-icons/bs";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
-const Cards = ({ onClick, key, image, episodeNumber, title, rating, title2, type, year, status }) => {
+const Cards = ({ onClick, key, image, episodeNumber, title, rating, title2, type, year, status, placeholder }) => {
   return (
     <div>
       <div key={key} onClick={onClick}>
         <div className="group relative cursor-pointer overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30 rounded-t-lg">
-          <img className="w-[330px] h-[180px] lg:w-[350px] lg:h-[250px] object-cover transition-transform duration-500 group-hover:rotate-3 group-hover:scale-125" src={image} alt="Latest Anime" />
+          <LazyLoadImage
+            className="w-[330px] h-[180px] lg:w-[350px] lg:h-[250px] object-cover transition-transform duration-500 group-hover:rotate-3 group-hover:scale-125"
+            src={image}
+            alt="Latest Anime"
+            loading="lazy"
+            placeholderSrc={placeholder}
+            effect={`blur`}
+          />
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black group-hover:from-black/70 group-hover:via-black/60 group-hover:to-black/70"></div>
           <div className="absolute inset-0 flex translate-y-[120%] flex-col items-center justify-center px-2 lg:px-9 text-center transition-all duration-500 group-hover:translate-y-0">
             <BsFillPlayFill className="text-[30px] text-white" />

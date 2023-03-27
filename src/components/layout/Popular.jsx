@@ -36,7 +36,7 @@ const Dub = () => {
         </div>
       </div>
 
-      <div className="grid gap-5 mt-5 grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-5">
+      <div className="grid gap-5 mt-5 grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
         {popular.results.map((item, index) => (
           <Link to={`/anime/detail/${item.id}`} key={index}>
             <Cards
@@ -47,6 +47,7 @@ const Dub = () => {
               type={item.releaseDate}
               episodeNumber={`Episode ${item.totalEpisodes}`}
               status={item.status}
+              placeholder={item.image}
             />
           </Link>
         ))}

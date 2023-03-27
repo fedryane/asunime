@@ -4,6 +4,8 @@ import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 import { useParams, Link } from "react-router-dom";
 import LoadingComponent from "../particles/LoadingComponent";
 import { Latest, Genres, Upcoming } from "../layout/index";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 // API Call
 import { fetchAnimeDetail } from "../../config/FetchData";
@@ -19,7 +21,7 @@ const AnimeDetails = () => {
     isError: detailError,
   } = useQuery({
     queryKey: ["DetailAnime", id],
-    queryFn: () => fetchAnimeDetail(id),
+    queryFn: () => fetchAnimeDetail(id, "marin"),
     keepPreviousData: true,
   });
 
@@ -142,7 +144,7 @@ const AnimeDetails = () => {
           </div>
         </div>
 
-        <img src={detail.cover} alt="" className="absolute z-[-1] top-0 left-0 right-0 w-full h-[500px] blur-xl opacity-80" />
+        <img src={detail.cover} loading="lazy" alt="" className="absolute z-[-1] top-0 left-0 right-0 w-full h-[549px] blur-lg opacity-80" />
       </div>
 
       <div className="flex flex-wrap justify-between">
@@ -155,6 +157,7 @@ const AnimeDetails = () => {
                 src={`https://www.youtube.com/embed/${detail.trailer.id}`}
                 title="YouTube video player"
                 frameborder="0"
+                loading="lazy"
                 allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
                 allowfullscreen
               ></iframe>
@@ -168,7 +171,7 @@ const AnimeDetails = () => {
                 {detail.characters.map((i) => {
                   return (
                     <div className="flex flex-col items-center justify-center mt-5">
-                      <img src={i.image} alt="" className="w-32 h-40 lg:w-40 lg:h-56 rounded-lg" />
+                      <LazyLoadImage src={i.image} alt="" placeholderSrc={i.image} effect="blur" loading="lazy" className="w-32 h-40 lg:w-40 lg:h-56 rounded-lg" />
                       <div className="text-gray-300 text-center mt-3">
                         <p className="font-bold">{i.name.full.length > 12 ? i.name.first : i.name.full}</p>
                         <p className={`${i.role === "MAIN" ? "text-yellow-600" : "text-blue-500"} text-[10px]`}>{i.role.toLowerCase().charAt(0).toUpperCase() + i.role.toLowerCase().slice(1)}</p>

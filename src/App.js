@@ -35,6 +35,3 @@ const App = () => {
 };
 
 export default App;
-
-// <Suspense fallback={<div>Loading...</div>}>
-//       </Suspense>

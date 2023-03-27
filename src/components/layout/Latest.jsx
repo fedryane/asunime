@@ -78,6 +78,7 @@ const Latest = () => {
               rating={item.rating}
               type={item.type}
               status={"Latest"}
+              placeholder={item.image}
             />
           </div>
         ))}
