@@ -1,5 +1,5 @@
 import React from "react";
-import { fetchPopular } from "../../config/FetchData";
+import { fetchTopAiring } from "../../config/FetchData";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import Loader from "../particles/LoadingComponent";
@@ -17,7 +17,7 @@ const Trending = () => {
     isError: isPopularError,
   } = useQuery({
     queryKey: ["populars"],
-    queryFn: () => fetchPopular(1, 20),
+    queryFn: () => fetchTopAiring(1, 20),
     keepPreviousData: true,
   });
 
@@ -32,7 +32,7 @@ const Trending = () => {
         slidesPerView={2}
         spaceBetween={30}
         autoplay={{
-          delay: 2000,
+          delay: 6000,
           disableOnInteraction: false,
         }}
         pagination={{
@@ -94,14 +94,14 @@ const Trending = () => {
               <img className="w-full h-full object-cover transition-transform duration-500 group-hover:rotate-3 group-hover:scale-150" src={anime.image} alt="Trending Anime" />
 
               <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black group-hover:from-black/70 group-hover:via-black/60 group-hover:to-black/70"></div>
-              <div className="absolute inset-0 flex translate-y-[120%] lg:translate-y-[50%] flex-col items-center justify-center px-2 lg:px-2 text-center transition-all duration-500 group-hover:translate-y-0">
+              <div className="absolute inset-0 flex translate-y-[120%] lg:translate-y-[45%] flex-col items-center justify-center px-2 lg:px-2 text-center transition-all duration-500 group-hover:translate-y-0">
                 <h1 className="font-dmserif text-[10px] font-bold text-white">{anime.title.romaji}</h1>
                 <h1 className="font-dmserif text-[10px] font-bold text-gray-400 italic">{anime.title.english}</h1>
 
                 <p
                   className={`${
-                    anime.status === "Completed" ? "text-yellow-400" : "text-blue-500"
-                  } hidden lg:block mb-3 text-[10px] font-bold mt-2 italic text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100`}
+                    anime.status === "Completed" ? "text-yellow-400" : anime.status === "Ongoing" ? "text-blue-300" : "text-white"
+                  } hidden lg:block mb-3 text-[10px] font-bold mt-2 italic  opacity-0 transition-opacity duration-300 group-hover:opacity-100`}
                 >
                   {anime.status}
                 </p>

@@ -1,10 +1,10 @@
-import React, { lazy, Suspense } from "react";
+import React from "react";
 import { Routes, Route } from "react-router-dom";
-import { Homepage, LatestPage, DubPage, AnimeDetail, Watch, Watchs, AnimeByGenre } from "./pages/index.js";
+import { Homepage, LatestPage, PopularPage, AnimeDetail, Watch, Watchs, AnimeByGenre } from "./pages/index.js";
 
 // const Homepage = lazy(() => import("./pages/Homepage"));
 // const LatestPage = lazy(() => import("./pages/LatestPage"));
-// const DubPage = lazy(() => import("./pages/DubPage"));
+// const PopularPage = lazy(() => import("./pages/PopularPage"));
 // const AnimeDetail = lazy(() => import("./pages/AnimeDetail"));
 // const Watch = lazy(() => import("./pages/Watch"));
 
@@ -13,6 +13,7 @@ const App = () => {
     <Routes>
       <Route path="/" element={<Homepage />} />
 
+      {/* Detail Anime Route */}
       <Route path="/anime/detail/:id" element={<AnimeDetail />} />
 
       {/* Latest Anime Route */}
@@ -20,15 +21,15 @@ const App = () => {
       <Route path="/latest-update/:page" element={<LatestPage />} />
 
       {/* Dubbed Anime Route */}
-      <Route path="/dub-anime" element={<DubPage />} />
+      <Route path="/dub-anime" element={<PopularPage />} />
 
       {/* Play Anime Route */}
-      <Route path="/latest-watch/:id/:eps" element={<Watch />} />
-      <Route path="/watch-top-airing/:id" element={<Watch />} />
-
+      <Route path="/watch/:id/:eps" element={<Watch />} />
       <Route path="/watch-now/:id/:epsId" element={<Watchs />} />
 
+      {/* Genre Anime Route */}
       <Route path="/genre/:id" element={<AnimeByGenre />} />
+      <Route path="/genre/:id/:page" element={<AnimeByGenre />} />
     </Routes>
   );
 };

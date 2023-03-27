@@ -14,18 +14,19 @@ export const fetchPopular = async (page, perPage) => {
 
 export const fetchLatest = async (page, perPage, provider) => {
   try {
-    // const res = await API.get(`${aniList}/recent-episodes?page=${page}&perPage=${perPage}&provider=${provider}`);
-    const res = await API.get(`${gogoAnime}/recent-episodes?page=${page}&perPage=${perPage}`);
+    const res = await API.get(`${aniList}/recent-episodes?page=${page}&perPage=${perPage}&provider=${provider}`);
+    // const res = await API.get(`${gogoAnime}/recent-episodes?page=${page}&perPage=${perPage}`);
     return res.data;
   } catch (error) {
     console.log(error);
   }
 };
 
-export const fetchTopAiring = async (page) => {
+export const fetchTopAiring = async (page, perPage) => {
   try {
     // const res = await API.get(`${gogoAnime}/top-airing`);
-    const res = await API.get(`${gogoAnime}/top-airing?page=${page}`);
+    // const res = await API.get(`${gogoAnime}/top-airing?page=${page}`);
+    const res = await API.get(`${aniList}/trending?page=${page}&perPage=${perPage}`);
     return res.data;
   } catch (error) {
     console.log(error);
@@ -68,9 +69,18 @@ export const fetchDetailOnWatch = async (id) => {
   }
 };
 
-export const fetchGenre = async (genre, page) => {
+export const fetchGenre = async (page, perPage, genres) => {
   try {
-    const res = await API.get(`${gogoAnime}/genre/${genre}&page=${page}`);
+    const res = await API.get(`${aniList}/advanced-search?page=${page}&perPage=${perPage}&genres=${[genres]}`);
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const fetchUpcoming = async (page, perPage, status) => {
+  try {
+    const res = await API.get(`${aniList}/advanced-search?page=${page}&perPage=${perPage}&status=${status}`);
     return res.data;
   } catch (error) {
     console.log(error);

@@ -1,7 +1,6 @@
 import React from "react";
 import Header from "../components/common/Header";
-import { Trending, Latest, Genres, TopAiring, Dub } from "../components/layout";
-
+import { Trending, Latest, Genres, Upcoming, Popular } from "../components/layout";
 
 const Homepage = () => {
   return (
@@ -13,12 +12,12 @@ const Homepage = () => {
         <div className="w-[100%] lg:w-[75%]">
           <Latest />
           <div className="mt-10">
-            <Dub />
+            <Popular />
           </div>
         </div>
         <div className="w-[100%] lg:w-[25%]">
           <Genres />
-          <TopAiring />
+          <Upcoming />
         </div>
       </div>
     </div>
