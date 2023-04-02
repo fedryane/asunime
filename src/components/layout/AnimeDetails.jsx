@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { BsFillPlayFill } from "react-icons/bs";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import LoadingComponent from "../particles/LoadingComponent";
 import { Latest, Genres, Upcoming } from "../layout/index";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 // API Call
 import { fetchAnimeDetail } from "../../config/FetchData";
@@ -12,6 +14,7 @@ import { useQuery } from "@tanstack/react-query";
 const AnimeDetails = () => {
   const [show, setShow] = useState(false);
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const {
     data: detail,
@@ -19,12 +22,14 @@ const AnimeDetails = () => {
     isError: detailError,
   } = useQuery({
     queryKey: ["DetailAnime", id],
-    queryFn: () => fetchAnimeDetail(id),
+    queryFn: () => fetchAnimeDetail(id, "gogoanime"),
     keepPreviousData: true,
+    retry: false,
+    refetchOnWindowFocus: false,
   });
 
   if (detailLoading) return <LoadingComponent />;
-  if (detailError) return <h1>Error...</h1>;
+  if (detailError) return navigate("/");
 
   const shortenedDetails = detail?.description?.slice(0, 200);
   const handleShowMore = () => {
@@ -58,7 +63,7 @@ const AnimeDetails = () => {
                   <p className="text-gray-400 italic">No episodes</p>
                 ) : (
                   <Link
-                    to={`/watch-now/${id}/${detail?.episodes[0]?.id}`}
+                    to={`/watch/${id}/${detail?.episodes[0]?.number}`}
                     className="bg-[#EF547A]  hover:bg-[#eb839d] text-white px-8 py-3 lg:px-7 lg:py-3 rounded-full cursor-pointer flex items-center gap-2"
                   >
                     <BsFillPlayFill />
@@ -142,7 +147,7 @@ const AnimeDetails = () => {
           </div>
         </div>
 
-        <img src={detail.cover} alt="" className="absolute z-[-1] top-0 left-0 right-0 w-full h-[500px] blur-xl opacity-80" />
+        <img src={detail.cover} loading="lazy" alt="" className="absolute z-[-1] top-0 left-0 right-0 w-full h-[549px] blur-lg opacity-80" />
       </div>
 
       <div className="flex flex-wrap justify-between">
@@ -154,9 +159,9 @@ const AnimeDetails = () => {
                 className="mt-5 aspect-video rounded-lg"
                 src={`https://www.youtube.com/embed/${detail.trailer.id}`}
                 title="YouTube video player"
-                frameborder="0"
+                loading="lazy"
                 allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
-                allowfullscreen
+                allowFullScreen={true}
               ></iframe>
             </div>
           )}
@@ -165,10 +170,10 @@ const AnimeDetails = () => {
             <div className="my-5">
               <h1 className="text-[#EF547A] font-normal text-[17px] lg:text-[25px]">Characters List</h1>
               <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 2xl:grid-cols-8 gap-0 lg:gap-5">
-                {detail.characters.map((i) => {
+                {detail.characters.map((i, idx) => {
                   return (
-                    <div className="flex flex-col items-center justify-center mt-5">
-                      <img src={i.image} alt="" className="w-32 h-40 lg:w-40 lg:h-56 rounded-lg" />
+                    <div className="flex flex-col items-center justify-center mt-5" key={idx}>
+                      <LazyLoadImage src={i.image} alt="" placeholderSrc={i.image} effect="blur" loading="lazy" className="w-32 h-40 lg:w-40 lg:h-56 rounded-lg" />
                       <div className="text-gray-300 text-center mt-3">
                         <p className="font-bold">{i.name.full.length > 12 ? i.name.first : i.name.full}</p>
                         <p className={`${i.role === "MAIN" ? "text-yellow-600" : "text-blue-500"} text-[10px]`}>{i.role.toLowerCase().charAt(0).toUpperCase() + i.role.toLowerCase().slice(1)}</p>

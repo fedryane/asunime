@@ -4,4 +4,5 @@ export { default as PopularPage } from "./PopularPage.jsx";
 export { default as AnimeDetail } from "./AnimeDetail.jsx";
 export { default as AnimeByGenre } from "./AnimeByGenre.jsx";
 export { default as Watch } from "./Watch.jsx";
-export { default as Watchs } from "./Watchs.jsx";
+export { default as MoviePage } from "./MoviePage.jsx";
+// export { default as Watchs } from "./Watchs.jsx";

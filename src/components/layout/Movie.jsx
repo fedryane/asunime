@@ -6,13 +6,13 @@ import Cards from "../particles/Cards";
 import LatestSkeleton from "../particles/skeleton/LatestSkeleton";
 
 // API Call
-import { fetchLatest } from "../../config/FetchData";
+import { fetchMovie } from "../../config/FetchData";
 import { useQuery } from "@tanstack/react-query";
 
 const ITEM_PAGE = 30;
-const PROVIDER = "gogoanime";
+const FORMAT = "MOVIE";
 
-const Latest = () => {
+const Movie = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const queryParams = new URLSearchParams(location.search);
@@ -22,7 +22,7 @@ const Latest = () => {
 
   const handleSwitchPage = (pages) => {
     setCurrentPage(pages.selected + 1);
-    navigate(`/latest-update?page=${pages.selected + 1}`);
+    navigate(`/movie?page=${pages.selected + 1}`);
   };
 
   const handleWatch = (animeId, epsNum) => {
@@ -30,27 +30,29 @@ const Latest = () => {
   };
 
   const {
-    data: latest,
-    isLoading: isLatestLoading,
-    isError: isLatestError,
+    data: movie,
+    isLoading: isMovieLoading,
+    isError: isMovieError,
   } = useQuery({
-    queryKey: ["latestsAnime", currentPage],
-    queryFn: () => fetchLatest(currentPage, ITEM_PAGE, PROVIDER),
+    queryKey: ["moviesAnime", FORMAT, currentPage],
+    queryFn: () => fetchMovie(currentPage, ITEM_PAGE, FORMAT),
     keepPreviousData: true,
     // refetchOnWindowFocus: false,
   });
+
+  console.log(movie);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [currentPage]);
 
-  if (isLatestLoading) return <LatestSkeleton />;
-  if (isLatestError) return <h1>Error...</h1>;
+  if (isMovieLoading) return <LatestSkeleton />;
+  if (isMovieError) return <h1>Error...</h1>;
 
   return (
     <div className="w-full">
       <div className="flex justify-between items-center">
-        <h1 className="text-[#EF547A] font-normal text-[17px] lg:text-[25px]">Latest Update</h1>
+        <h1 className="text-[#EF547A] font-normal text-[17px] lg:text-[25px]">Movie Anime</h1>
 
         <div className="flex items-center gap-2 text-[#EF547A] hover:text-white cursor-pointer">
           {window.location.pathname === "/" ? (
@@ -63,14 +65,14 @@ const Latest = () => {
       </div>
 
       <div className="grid gap-5 mt-5 grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
-        {latest.results.map((item, index) => (
+        {movie.results.map((item, index) => (
           <div key={index}>
             <Cards
               onClick={() => {
-                handleWatch(item.id, item.episodeNumber);
+                handleWatch(item.id, item.totalEpisodes);
               }}
               image={item.image}
-              episodeNumber={`Episode ${item.episodeNumber}`}
+              episodeNumber={`Episode ${item.totalEpisodes}`}
               title={item.title.romaji.length > 30 ? item.title.romaji.slice(0, 40) + " ..." : item.title.romaji}
               title2={item.title.native.length > 30 ? item.title.native.slice(0, 40) + " ..." : item.title.native}
               rating={item.rating}
@@ -81,9 +83,9 @@ const Latest = () => {
           </div>
         ))}
       </div>
-      {window.location.pathname === "/latest-update" ? <Paginate onPageChange={handleSwitchPage} pageCount={latest?.totalPages} /> : null}
+      {window.location.pathname === "/movie" ? <Paginate onPageChange={handleSwitchPage} pageCount={movie?.totalPages} /> : null}
     </div>
   );
 };
 
-export default Latest;
+export default Movie;
