@@ -36,7 +36,6 @@ const WatchAnime = () => {
     refetchOnWindowFocus: false,
   });
 
-  console.log(detail);
 
   const handleJumpEps = async (epsNum) => {
     navigate(`/watch/${id}/${epsNum}`);

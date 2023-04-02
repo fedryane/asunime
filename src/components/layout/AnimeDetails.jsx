@@ -40,7 +40,7 @@ const AnimeDetails = () => {
     setShow(false);
   };
 
-  console.log(detail);
+
 
   return (
     <div className="w-full h-[500px]">

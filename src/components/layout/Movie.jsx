@@ -40,7 +40,6 @@ const Movie = () => {
     // refetchOnWindowFocus: false,
   });
 
-  console.log(movie);
 
   useEffect(() => {
     window.scrollTo(0, 0);
