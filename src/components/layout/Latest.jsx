@@ -9,7 +9,7 @@ import LatestSkeleton from "../particles/skeleton/LatestSkeleton";
 import { fetchLatest } from "../../config/FetchData";
 import { useQuery } from "@tanstack/react-query";
 
-const ITEM_PAGE = 30;
+const ITEM_PAGE = 35;
 const PROVIDER = "gogoanime";
 
 const Latest = () => {
@@ -37,12 +37,14 @@ const Latest = () => {
     queryKey: ["latestsAnime", currentPage],
     queryFn: () => fetchLatest(currentPage, ITEM_PAGE, PROVIDER),
     keepPreviousData: true,
-    // refetchOnWindowFocus: false,
+    refetchOnWindowFocus: false,
   });
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [currentPage]);
+
+  console.log(latest);
 
   if (isLatestLoading) return <LatestSkeleton />;
   if (isLatestError) return <h1>Error...</h1>;
@@ -63,23 +65,25 @@ const Latest = () => {
       </div>
 
       <div className="grid gap-5 mt-5 grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
-        {latest.results.map((item, index) => (
-          <div key={index}>
-            <Cards
-              onClick={() => {
-                handleWatch(item.id, item.episodeNumber);
-              }}
-              image={item.image}
-              episodeNumber={`Episode ${item.episodeNumber}`}
-              title={item.title.romaji.length > 30 ? item.title.romaji.slice(0, 40) + " ..." : item.title.romaji}
-              title2={item.title.native.length > 30 ? item.title.native.slice(0, 40) + " ..." : item.title.native}
-              rating={item.rating}
-              type={item.type}
-              status={"Latest"}
-              placeholder={item.image}
-            />
-          </div>
-        ))}
+        {latest.results
+          .filter((item) => item.type === "TV")
+          .map((item, index) => (
+            <div key={index}>
+              <Cards
+                onClick={() => {
+                  handleWatch(item.id, item.episodeNumber);
+                }}
+                image={item.image}
+                episodeNumber={`Episode ${item.episodeNumber}`}
+                title={item.title.romaji.length > 30 ? item.title.romaji.slice(0, 40) + " ..." : item.title.romaji}
+                title2={item.title.native.length > 30 ? item.title.native.slice(0, 40) + " ..." : item.title.native}
+                rating={item.rating}
+                type={item.type}
+                status={"Latest"}
+                placeholder={item.image}
+              />
+            </div>
+          ))}
       </div>
       {window.location.pathname === "/latest-update" ? <Paginate onPageChange={handleSwitchPage} pageCount={latest?.totalPages} /> : null}
     </div>
