@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import SearchBar from "../particles/SearchBar";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   const [navbar, setNavbar] = useState(false);
@@ -21,11 +21,10 @@ const Navbar = () => {
       <nav className={changeColor ? "w-full bg-[#141414] text-white fixed transition duration-300 z-10 opacity-80" : " w-full  bg-transparent text-white fixed transition duration-300 z-10"}>
         <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
           <div className="flex items-center justify-between py-3 md:py-5 md:block">
-            <a href="#a">
-              <Link className="text-2xl font-bold" to="/">
-                asu.raidep
-              </Link>
-            </a>
+            <NavLink className="text-2xl font-bold" to="/">
+              asu.raidep
+            </NavLink>
+
             <div className="md:hidden">
               <button className="p-2 text-gray-300 rounded-md outline-none focus:border-gray-400 focus:border" onClick={() => setNavbar(!navbar)}>
                 {navbar ? (
@@ -49,13 +48,14 @@ const Navbar = () => {
             <div className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0  ${navbar ? "block" : "hidden"}`}>
               <ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0">
                 <li className="text-gray-300 hover:text-blue-600">
-                  <Link to="/">Home</Link>
+                  <NavLink to="/">Home</NavLink>
                 </li>
                 <li className="text-gray-300 hover:text-blue-600">
-                  <a href="#a">Movies</a>
+                  <NavLink to="/movie">Movies</NavLink>
                 </li>
-                <li className="text-gray-300 hover:text-blue-600">
-                  <a href="#a">Genres</a>
+                <li className="text-gray-500 ">
+                  {/* <a href="#a">Anime List</a> */}
+                  <p>Anime List</p>
                 </li>
                 <li>
                   <SearchBar />

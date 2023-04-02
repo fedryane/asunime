@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import UpcomingSkeleton from "../particles/skeleton/UpcomingSkeleton";
 
 // API Call
 import { fetchUpcoming } from "../../config/FetchData";
@@ -20,19 +21,18 @@ const TopAiring = () => {
     keepPreviousData: true,
   });
 
-  if (upComingLoading) return <h1>Loading...</h1>;
+  if (upComingLoading) return <UpcomingSkeleton />;
   if (upComingError) return <h1>Error...</h1>;
-
-  // console.log(upComing);
 
   const handleWatch = (animeId) => {
     navigate(`/anime/detail/${animeId}`);
   };
 
+
   return (
     <div className="w-full mt-3">
       <h1 className="text-[#EF547A] font-normal text-[17px] lg:text-[25px]">Upcoming Anime</h1>
-      <div className="bg-[#2a2c31] rounded-lg  mt-5 p-0 lg:p-3">
+      <div className="bg-[#2a2c31] rounded-lg mt-5 p-0 lg:p-3">
         {upComing.results.map((anime, index) => (
           <div
             onClick={() => {
@@ -42,10 +42,9 @@ const TopAiring = () => {
             key={index}
           >
             <p className="text-[#EF547A]">{index + 1}</p>
-            <img src={anime.image} alt="" className="w-[72.4px] my-2 rounded-lg" />
-            <div className="flex flex-col">
-              <p className="text-white mt-2 text-[14px] p-2">{anime.title.romaji.length > 25 ? anime.title.romaji.slice(0, 40) + " ..." : anime.title.romaji}</p>
-            </div>
+            <img src={anime.image} alt={anime.title.romaji} className="w-[72.4px] my-2 rounded-lg items-center" loading="lazy" />
+
+            <p className="text-white mt-2 text-[14px] p-2">{anime.title.romaji.length > 25 ? anime.title.romaji.slice(0, 30) + " ..." : anime.title.romaji}</p>
           </div>
         ))}
       </div>

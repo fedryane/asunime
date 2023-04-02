@@ -86,3 +86,12 @@ export const fetchUpcoming = async (page, perPage, status) => {
     console.log(error);
   }
 };
+
+export const fetchMovie = async (page, perPage, format) => {
+  try {
+    const res = await API.get(`${aniList}/advanced-search?page=${page}&perPage=${perPage}&format=${format}`);
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+};

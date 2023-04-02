@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
-import { BsChevronRight, BsFillPlayFill } from "react-icons/bs";
+import { BsChevronRight } from "react-icons/bs";
 import Cards from "../particles/Cards";
 
 // API Call
@@ -11,7 +11,7 @@ import Pagination from "../particles/Pagination";
 const FilterAnime = () => {
   const { id } = useParams();
 
-  console.log(id);
+
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -40,7 +40,7 @@ const FilterAnime = () => {
     keepPreviousData: true,
   });
 
-  console.log(genre);
+
 
   useEffect(() => {
     window.scrollTo(0, 0);

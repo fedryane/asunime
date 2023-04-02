@@ -3,6 +3,8 @@ import Navbar from "./Navbar";
 import { BsDisplayFill, BsCalendarDateFill, BsPlayCircleFill, BsFillExclamationCircleFill, BsChevronRight } from "react-icons/bs";
 import { Hero } from "../../data/data";
 import { Link } from "react-router-dom";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 // Swiper
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -41,7 +43,16 @@ const Header = () => {
           >
             {Hero.map((item, index) => (
               <SwiperSlide className="relative" key={index}>
-                <img src={item.image} alt="spotlight-anime" className="w-full h-[300px] lg:h-[450px] object-center object-cover opacity-[0.4] brightness-50" />
+                <LazyLoadImage
+                  src={item.image}
+                  effect={`blur opacity-[0.2]`}
+                  height={`h-[300px] lg:h-[450px]`}
+                  width={`100%`}
+                  placeholderSrc={item.image}
+                  alt="spotlight-anime"
+                  loading="lazy"
+                  className="w-full h-[300px] lg:h-[450px] object-center object-cover opacity-[0.4]"
+                />
                 <div className="absolute bottom-0 left-5 lg:left-10 z-10">
                   <h1 className="font-bold text-[12px] lg:text-[20px] text-[#d64663]">#{item.id} Spotlight</h1>
                   <h1 className="text-[15px] md:text-xl lg:text-4xl text-white font-bold mt-3">{item.title}</h1>
