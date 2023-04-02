@@ -10,7 +10,7 @@ const WatchAnimeDetail = () => {
   const { id, epsId } = useParams();
   const navigate = useNavigate();
 
-  console.log(epsId);
+
 
   const {
     data: detail,
@@ -23,7 +23,7 @@ const WatchAnimeDetail = () => {
     refetchOnWindowFocus: false,
   });
 
-  console.log(detail);
+
 
   const {
     data: watch,
@@ -46,7 +46,7 @@ const WatchAnimeDetail = () => {
   if (isWatchLoading) return <LoadingComponent />;
   if (isWatchError) return <h1 className="text-white">Error...</h1>;
 
-  console.log(watch);
+
 
   return (
     <div className="">

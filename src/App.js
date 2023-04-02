@@ -1,6 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import { Homepage, LatestPage, PopularPage, AnimeDetail, Watch, Watchs, AnimeByGenre } from "./pages/index.js";
+import { Homepage, LatestPage, PopularPage, AnimeDetail, Watch, AnimeByGenre, MoviePage } from "./pages/index.js";
 
 // const Homepage = lazy(() => import("./pages/Homepage"));
 // const LatestPage = lazy(() => import("./pages/LatestPage"));
@@ -21,15 +21,19 @@ const App = () => {
       <Route path="/latest-update/:page" element={<LatestPage />} />
 
       {/* Dubbed Anime Route */}
-      <Route path="/dub-anime" element={<PopularPage />} />
+      <Route path="/popular-anime" element={<PopularPage />} />
+      <Route path="/popular-anime/:page" element={<PopularPage />} />
 
       {/* Play Anime Route */}
       <Route path="/watch/:id/:eps" element={<Watch />} />
-      <Route path="/watch-now/:id/:epsId" element={<Watchs />} />
 
       {/* Genre Anime Route */}
       <Route path="/genre/:id" element={<AnimeByGenre />} />
       <Route path="/genre/:id/:page" element={<AnimeByGenre />} />
+
+      {/* Movie Anime Route */}
+      <Route path="/movie" element={<MoviePage />} />
+      <Route path="/movie/:page" element={<MoviePage />} />
     </Routes>
   );
 };

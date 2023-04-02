@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import UpcomingSkeleton from "../particles/skeleton/UpcomingSkeleton";
 
 // API Call
 import { fetchUpcoming } from "../../config/FetchData";
@@ -20,14 +21,13 @@ const TopAiring = () => {
     keepPreviousData: true,
   });
 
-  if (upComingLoading) return <h1>Loading...</h1>;
+  if (upComingLoading) return <UpcomingSkeleton />;
   if (upComingError) return <h1>Error...</h1>;
-
-  console.log(upComing);
 
   const handleWatch = (animeId) => {
     navigate(`/anime/detail/${animeId}`);
   };
+
 
   return (
     <div className="w-full mt-3">
