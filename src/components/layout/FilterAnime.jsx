@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { BsChevronRight } from "react-icons/bs";
 import Cards from "../particles/Cards";
+import LoadingComponent from "../particles/LoadingComponent";
 
 // API Call
 import { fetchGenre } from "../../config/FetchData";
@@ -10,8 +11,6 @@ import Pagination from "../particles/Pagination";
 
 const FilterAnime = () => {
   const { id } = useParams();
-
-
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -40,14 +39,12 @@ const FilterAnime = () => {
     keepPreviousData: true,
   });
 
-
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [currentPage]);
 
-  if (isGenreLoading) return <h1>Loading...</h1>;
-  if (isGenreError) return <h1>Error...</h1>;
+  if (isGenreLoading) return <LoadingComponent />;
+  if (isGenreError) return navigate("/");
 
   return (
     <div className="w-full">

@@ -36,9 +36,12 @@ const WatchAnime = () => {
     refetchOnWindowFocus: false,
   });
 
-
   const handleJumpEps = async (epsNum) => {
     navigate(`/watch/${id}/${epsNum}`);
+  };
+
+  const handleGenre = (genre) => {
+    navigate(`/genre/${JSON.stringify(genre)}`);
   };
 
   const handleDetail = (animeId) => {
@@ -50,6 +53,8 @@ const WatchAnime = () => {
 
   if (isWatchLoading) return <LoadingComponent />;
   if (isWatchError) return navigate("/");
+
+  console.log(detail);
 
   return (
     <div className="">
@@ -84,6 +89,16 @@ const WatchAnime = () => {
           <div className="flex flex-row gap-2 my-3 justify-center lg:justify-start">
             <p className="border px-2 ">HD</p>
             <p className="border px-2 ">SUB</p>
+          </div>
+          <div className="mt-2">
+            {detail.genres.map((item) => (
+              <button
+                onClick={() => handleGenre([item])}
+                className="bg-purple-100 hover:bg-purple-300 text-purple-800 text-sm  font-medium mr-2 px-2.5 py-2 rounded dark:bg-purple-900 dark:text-purple-300 cursor-pointer hover:text-purple-500"
+              >
+                {item}
+              </button>
+            ))}
           </div>
           <h1 className="text-[17px] text-[#E65176] mt-5">Episodes</h1>
           <div

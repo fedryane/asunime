@@ -5,6 +5,5 @@ export { default as Upcoming } from "./Upcoming";
 export { default as Popular } from "./Popular";
 export { default as AnimeDetails } from "./AnimeDetails";
 export { default as WatchAnime } from "./WatchAnime";
-export { default as WatchAnimeDetail } from "./WatchAnimeDetail";
 export { default as FilterAnime } from "./FilterAnime";
 export { default as Movie } from "./Movie";

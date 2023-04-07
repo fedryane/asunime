@@ -47,7 +47,7 @@ const Latest = () => {
   console.log(latest);
 
   if (isLatestLoading) return <LatestSkeleton />;
-  if (isLatestError) return <h1>Error...</h1>;
+  if (isLatestError) return navigate("/");
 
   return (
     <div className="w-full">
