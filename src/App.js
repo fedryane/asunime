@@ -1,12 +1,14 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import { Homepage, LatestPage, PopularPage, AnimeDetail, Watch, AnimeByGenre, MoviePage } from "./pages/index.js";
-
-// const Homepage = lazy(() => import("./pages/Homepage"));
-// const LatestPage = lazy(() => import("./pages/LatestPage"));
-// const PopularPage = lazy(() => import("./pages/PopularPage"));
-// const AnimeDetail = lazy(() => import("./pages/AnimeDetail"));
-// const Watch = lazy(() => import("./pages/Watch"));
+import {
+  Homepage,
+  LatestPage,
+  PopularPage,
+  AnimeDetail,
+  Watch,
+  AnimeByGenre,
+  MoviePage,
+} from "./pages/index.js";
 
 const App = () => {
   return (
