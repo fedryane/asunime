@@ -1,3 +1,4 @@
+import axios from "axios";
 import { API } from "./API";
 
 const gogoAnime = "/anime/gogoanime";
@@ -5,7 +6,9 @@ const aniList = "/meta/anilist";
 
 export const fetchPopular = async (page, perPage) => {
   try {
-    const res = await API.get(`${aniList}/popular?page=${page}&perPage=${perPage}`);
+    const res = await API.get(
+      `${aniList}/popular?page=${page}&perPage=${perPage}`
+    );
     return res.data;
   } catch (error) {
     console.log(error);
@@ -14,7 +17,9 @@ export const fetchPopular = async (page, perPage) => {
 
 export const fetchLatest = async (page, perPage, provider) => {
   try {
-    const res = await API.get(`${aniList}/recent-episodes?page=${page}&perPage=${perPage}&provider=${provider}`);
+    const res = await API.get(
+      `${aniList}/recent-episodes?page=${page}&perPage=${perPage}&provider=${provider}`
+    );
     // const res = await API.get(`${gogoAnime}/recent-episodes?page=${page}&perPage=${perPage}`);
     return res.data;
   } catch (error) {
@@ -26,7 +31,9 @@ export const fetchTopAiring = async (page, perPage) => {
   try {
     // const res = await API.get(`${gogoAnime}/top-airing`);
     // const res = await API.get(`${gogoAnime}/top-airing?page=${page}`);
-    const res = await API.get(`${aniList}/trending?page=${page}&perPage=${perPage}`);
+    const res = await API.get(
+      `${aniList}/trending?page=${page}&perPage=${perPage}`
+    );
     return res.data;
   } catch (error) {
     console.log(error);
@@ -53,7 +60,9 @@ export const fetchAnimeDetail = async (id, provider) => {
 
 export const fetchPlayAnime = async (epsId, provider) => {
   try {
-    const res = await API.get(`${gogoAnime}/watch/${epsId}?provider=${provider}`);
+    const res = await axios.get(
+      `https://api.consumet.org${aniList}/watch/${epsId}?provider=${provider}`
+    );
     return res.data;
   } catch (error) {
     console.log(error);
@@ -71,7 +80,11 @@ export const fetchDetailOnWatch = async (id) => {
 
 export const fetchGenre = async (page, perPage, genres) => {
   try {
-    const res = await API.get(`${aniList}/advanced-search?page=${page}&perPage=${perPage}&genres=${[genres]}`);
+    const res = await API.get(
+      `${aniList}/advanced-search?page=${page}&perPage=${perPage}&genres=${[
+        genres,
+      ]}`
+    );
     return res.data;
   } catch (error) {
     console.log(error);
@@ -80,7 +93,9 @@ export const fetchGenre = async (page, perPage, genres) => {
 
 export const fetchUpcoming = async (page, perPage, status) => {
   try {
-    const res = await API.get(`${aniList}/advanced-search?page=${page}&perPage=${perPage}&status=${status}`);
+    const res = await API.get(
+      `${aniList}/advanced-search?page=${page}&perPage=${perPage}&status=${status}`
+    );
     return res.data;
   } catch (error) {
     console.log(error);
@@ -89,7 +104,9 @@ export const fetchUpcoming = async (page, perPage, status) => {
 
 export const fetchMovie = async (page, perPage, format) => {
   try {
-    const res = await API.get(`${aniList}/advanced-search?page=${page}&perPage=${perPage}&format=${format}`);
+    const res = await API.get(
+      `${aniList}/advanced-search?page=${page}&perPage=${perPage}&format=${format}`
+    );
     return res.data;
   } catch (error) {
     console.log(error);
