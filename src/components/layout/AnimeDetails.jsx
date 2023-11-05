@@ -65,11 +65,11 @@ const AnimeDetails = () => {
                 <p>{detail.duration} Min</p>
               </div>
               <div className="flex justify-center lg:justify-start my-5">
-                {detail.episodes.length === 0 ? (
+                {detail?.episodes?.length === 0 ? (
                   <p className="text-gray-400 italic">No episodes</p>
                 ) : (
                   <Link
-                    to={`/watch/${id}/${detail?.episodes[0]?.number}`}
+                    // to={`/watch/${id}/${detail?.episodes[0]?.number}`}
                     className="bg-[#EF547A]  hover:bg-[#eb839d] text-white px-8 py-3 lg:px-7 lg:py-3 rounded-full cursor-pointer flex items-center gap-2"
                   >
                     <BsFillPlayFill />
@@ -80,7 +80,7 @@ const AnimeDetails = () => {
 
               <div className="hidden lg:block">
                 <p className="text-white font-normal text-[12px] lg:text-[13px]">
-                  {show ? detail.description : shortenedDetails}
+                  {show ? detail?.description : shortenedDetails}
                 </p>
 
                 {detail?.description?.length > 200 && (

@@ -10,9 +10,9 @@ const Homepage = () => {
 
       <div className="flex flex-col lg:flex-row justify-between items-start gap-5 px-5 lg:px-10 my-10">
         <div className="w-[100%] lg:w-[75%]">
-          <div className="rounded-lg shadow-md border border-[#2A2C31] p-3 md:p-7">
+          {/* <div className="rounded-lg shadow-md border border-[#2A2C31] p-3 md:p-7">
             <Latest />
-          </div>
+          </div> */}
           <div className="mt-10 rounded-lg shadow-md border border-[#2A2C31]  p-3 md:p-7">
             <Popular />
           </div>
