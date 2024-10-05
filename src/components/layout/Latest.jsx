@@ -26,7 +26,7 @@ const Latest = () => {
   };
 
   const handleWatch = (animeId, epsNum) => {
-    navigate(`/watch/${animeId}/${epsNum}`);
+    navigate(`/watch/${animeId}${epsNum}`);
   };
 
   const {
@@ -44,7 +44,7 @@ const Latest = () => {
     window.scrollTo(0, 0);
   }, [currentPage]);
 
-  console.log(latest);
+  // console.log(latest);
 
   if (isLatestLoading) return <LatestSkeleton />;
   if (isLatestError) return navigate("/");
@@ -52,9 +52,7 @@ const Latest = () => {
   return (
     <div className="w-full">
       <div className="flex justify-between items-center">
-        <h1 className="text-[#EF547A] font-normal text-[17px] lg:text-[25px]">
-          Latest Update
-        </h1>
+        <h1 className="text-[#EF547A] font-normal text-[17px] lg:text-[25px]">Latest Update</h1>
 
         <div className="flex items-center gap-2 text-[#EF547A] hover:text-white cursor-pointer">
           {window.location.pathname === "/" ? (
@@ -67,13 +65,13 @@ const Latest = () => {
       </div>
 
       <div className="grid gap-5 mt-5 grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
-        {/* {latest.results
+        {latest.results
           .filter((item) => item.type === "TV")
           .map((item, index) => (
             <div key={index}>
               <Cards
                 onClick={() => {
-                  handleWatch(item.id, item.episodeNumber);
+                  handleWatch(item.id, item.episodeId);
                 }}
                 image={item.image}
                 episodeNumber={`Episode ${item.episodeNumber}`}
@@ -85,14 +83,9 @@ const Latest = () => {
                 placeholder={item.image}
               />
             </div>
-          ))} */}
+          ))}
       </div>
-      {window.location.pathname === "/latest-update" ? (
-        <Paginate
-          onPageChange={handleSwitchPage}
-          pageCount={latest?.totalPages}
-        />
-      ) : null}
+      {window.location.pathname === "/latest-update" ? <Paginate onPageChange={handleSwitchPage} pageCount={latest?.totalPages} /> : null}
     </div>
   );
 };
