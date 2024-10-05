@@ -72,7 +72,7 @@ export const fetchAnimeDetail = async (id) => {
 export const fetchPlayAnime = async (epsId, provider) => {
   try {
     const res = await API.get(`${aniList}/watch/${epsId}?provider=${provider}`);
-    // console.log("WATCH", res);
+
     return res.data;
   } catch (error) {
     console.log(error);
